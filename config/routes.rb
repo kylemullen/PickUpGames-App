@@ -1,4 +1,14 @@
 Rails.application.routes.draw do
+
+  get 'sports/new' => 'sports#new'
+  get 'sports' => 'sports#index'
+  post 'sports' => 'sports#create'
+  get 'sports/:id' => 'sports#show', :as => :sport
+  get 'sports/:id/edit' => 'sports#edit'
+  patch 'sports/:id' => 'sports#update'
+  delete 'sports/:id' => 'sports#destroy'
+
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -6,16 +16,16 @@ Rails.application.routes.draw do
   # root 'welcome#index'
 
   # Example of regular route:
-  #   get 'products/:id' => 'catalog#view'
+  #   get 'sports/:id' => 'catalog#view'
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
-  #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
+  #   get 'sports/:id/purchase' => 'catalog#purchase', as: :purchase
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
+  #   resources :sports
 
   # Example resource route with options:
-  #   resources :products do
+  #   resources :sports do
   #     member do
   #       get 'short'
   #       post 'toggle'
@@ -27,13 +37,13 @@ Rails.application.routes.draw do
   #   end
 
   # Example resource route with sub-resources:
-  #   resources :products do
+  #   resources :sports do
   #     resources :comments, :sales
   #     resource :seller
   #   end
 
   # Example resource route with more complex sub-resources:
-  #   resources :products do
+  #   resources :sports do
   #     resources :comments
   #     resources :sales do
   #       get 'recent', on: :collection
@@ -49,8 +59,8 @@ Rails.application.routes.draw do
 
   # Example resource route within a namespace:
   #   namespace :admin do
-  #     # Directs /admin/products/* to Admin::ProductsController
-  #     # (app/controllers/admin/products_controller.rb)
-  #     resources :products
+  #     # Directs /admin/sports/* to Admin::sportsController
+  #     # (app/controllers/admin/sports_controller.rb)
+  #     resources :sports
   #   end
 end

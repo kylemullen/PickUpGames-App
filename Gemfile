@@ -1,5 +1,11 @@
 source 'https://rubygems.org'
+gem 'devise'
+
 gem 'bootstrap-sass'
+
+
+gem 'quiet_assets'
+gem 'simple_form'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.6'

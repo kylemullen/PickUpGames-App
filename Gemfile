@@ -4,6 +4,7 @@ gem 'devise'
 gem 'bootstrap-sass'
 
 
+
 gem 'quiet_assets'
 gem 'simple_form'
 

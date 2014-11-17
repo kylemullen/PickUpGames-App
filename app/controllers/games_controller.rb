@@ -5,12 +5,14 @@ class GamesController < ApplicationController
 	end
 
 	def index
-
+		@games = Game.all
+		@games = @games.where("status == ?" , "open") 
 	end
 
 	def create
 	  @game = current_user.games.create(game_params)
-	  # @game = Game.create(game_params.merge({:user_id => current_user.id}))
+	  ## ^^^^^long syntax for this.  Don't have to use the "merge"
+	  #@game = Game.create(game_params.merge({:user_id => current_user.id}))
 	end
 
 	def new
@@ -20,7 +22,7 @@ class GamesController < ApplicationController
 	private
 
 	def game_params
-		return params.require(:game).permit(:title)
+		return params.require(:game).permit(:title, :players_committed, :players_looking_for)
 	end
 
 end

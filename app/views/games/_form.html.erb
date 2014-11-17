@@ -1,1 +1,15 @@
-_form.html.erb
+<%= form_for @game do |f| %>
+	<div>
+	<%= f.label :title %>
+	<%= f.text_field :title %>
+
+	<%= f.label :how_many_players_do_you_have_already? %>
+	<%= f.text_field :players_committed %>
+	
+	</div>
+
+	<div>
+		<%= f.submit %>
+	</div>
+
+<% end %>

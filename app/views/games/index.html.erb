@@ -1,1 +1,30 @@
 <h1> List of Current Games </h1>
+
+<div class="row">
+<% @games.each do |game| %>
+
+<div class="column">
+ 
+  	<p>Game:<%= game.title %></p>
+  	<p>Status:<%= game.status %></p>
+  	<p>User:<%= game.user.email %></p>
+  	
+<% end %>
+
+	<a href="http://localhost:3000/">Home</a>
+	<a href="http://localhost:3000/games/mygame">My Game</a>
+
+	<% if user_signed_in? %>
+
+	  <a href="http://localhost:3000/users/sign_in">Sign Out</a>
+
+	<% else %>
+
+		<a href="http://localhost:3000/users/sign_in">Sign In</a>
+		<a href="http://localhost:3000/users/sign_up">Sign Up</a>
+
+
+	<% end %>
+
+
+

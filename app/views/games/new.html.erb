@@ -1,19 +1,4 @@
-<%= form_for @game do |f| %>
-	<div>
-	<%= f.label :title %>
-	<%= f.text_field :title %>
+<h1>Create Your Game</h>
 
-	<%= f.label :how_many_players_do_you_have_already? %>
-	<%= f.text_field :players_committed %>
+<%= render "form" %>
 
-	<%= f.label :how_many_more_are_you_looking_for? %>
-	<%= f.text_field :players_looking_for %>
-	
-	</div>
-
-
-	<div>
-		<%= f.submit %>
-	</div>
-
-<% end %>

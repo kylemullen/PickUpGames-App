@@ -2,20 +2,14 @@ Rails.application.routes.draw do
 
   devise_for :users
 
+  root 'games#index'
+
   resources :games
+  resources :neighborhoods
+  resources :sports
+  resources :courts
+  resources :parks
   
-  root 'sports#index'
-  get 'sports/new' => 'sports#new'
-  get 'sports' => 'sports#index'
-  post 'sports' => 'sports#create'
-  get 'sports/:id' => 'sports#show', :as => :sport
-  get 'sports/:id/edit' => 'sports#edit'
-  patch 'sports/:id' => 'sports#update'
-  delete 'sports/:id' => 'sports#destroy'
-
-
-
-
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

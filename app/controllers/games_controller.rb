@@ -1,12 +1,16 @@
 class GamesController < ApplicationController
-	
-	def show
+	before_action :authenticate_user!
 
+	def show
+		if params[:id] == "mygame"
+			@game = Game.find_by(:user_id => current_user.id, :status => "open")
+		else
+			@game = Game.find_by(:id => params[:id])
+		end
 	end
 
 	def index
 		@games = Game.all
-		@games = @games.where("status == ?" , "open") 
 	end
 
 	def create
@@ -17,6 +21,25 @@ class GamesController < ApplicationController
 
 	def new
 	  @game = Game.new
+	end
+
+	def edit
+		@game = Game.find_by(:id => params[:id])
+	end
+
+	def update
+		@game = Game.find_by(:id => params[:id])
+		@game.update(params[:game])
+		flash[:info] = "Game Succesfully Modified."
+		redirect_to @game
+	end
+
+	def destroy
+		@game = game.find_by(:id => params[:id])
+		@game.destroy
+		flash[:danger] = "Game Removed."
+		redirect_to '/'
+
 	end
 
 	private

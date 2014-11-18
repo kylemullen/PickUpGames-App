@@ -1,5 +1,6 @@
 class CourtsController < ApplicationController
-	
+	before_action :authenticate_admin!, :only => [:edit, :destroy, :new, :update, :create]
+
 	def create
 	end
 
@@ -17,6 +18,11 @@ class CourtsController < ApplicationController
 
 	def edit
 	end
+
+	def update
+	end
+
+	
 
 
 

@@ -14,9 +14,8 @@
  *= require_self
  */
 
- .navbar-default {
- 	color: #FFFFFF;
-	background-color: #2E2EFE;
+ .application {
+ 		margin-left:10em;
 
 
 

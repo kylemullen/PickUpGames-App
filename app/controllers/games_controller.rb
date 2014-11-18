@@ -4,6 +4,10 @@ class GamesController < ApplicationController
 	def show
 		if params[:id] == "mygame"
 			@game = Game.find_by(:user_id => current_user.id, :status => "open")
+				# if @game.status == "closed"
+				# 	redirect_to "/games/new"
+				# else @game.status == "open"
+				# 	Game.find_by
 		else
 			@game = Game.find_by(:id => params[:id])
 		end
@@ -17,6 +21,7 @@ class GamesController < ApplicationController
 	  @game = current_user.games.create(game_params)
 	  ## ^^^^^long syntax for this.  Don't have to use the "merge"
 	  #@game = Game.create(game_params.merge({:user_id => current_user.id}))
+	  redirect_to '/'
 	end
 
 	def new
@@ -35,7 +40,7 @@ class GamesController < ApplicationController
 	end
 
 	def destroy
-		@game = game.find_by(:id => params[:id])
+		@game = Game.find_by(:id => params[:id])
 		@game.destroy
 		flash[:danger] = "Game Removed."
 		redirect_to '/'
@@ -45,7 +50,7 @@ class GamesController < ApplicationController
 	private
 
 	def game_params
-		return params.require(:game).permit(:title, :players_committed, :players_looking_for)
+		return params.require(:game).permit(:title, :players_committed, :players_looking_for, :court_id)
 	end
 
 end

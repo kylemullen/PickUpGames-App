@@ -5,14 +5,18 @@
 
 <div class="column">
  
-  	<p>Game:<%= game.title %></p>
-  	<p>Status:<%= game.status %></p>
-  	<p>User:<%= game.user.email %></p>
+  	<p>15&nbsp;Game:<%= game.title %></p>
+  	<p>15&nbsp;Status:<%= game.status %></p>
+  	<p>15&nbsp;User:<%= game.user.email %></p>
   	
 <% end %>
 
 	<a href="http://localhost:3000/">Home</a>
+  </br>
 	<a href="http://localhost:3000/games/mygame">My Game</a>
+	</br>
+	<a href="http://localhost:3000/games/new">Create a new game</a>
+   </br>
 
 	<% if user_signed_in? %>
 

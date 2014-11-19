@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 gem 'devise'
 
 gem 'bootstrap-sass'
-
+gem 'unirest'
 
 
 gem 'quiet_assets'

@@ -3,13 +3,14 @@
 
 
   <p>  User:<%= @game.user.email %></p>
-  <p>  Court:<%= @game.court.name %><p>
+  <p>  Court:<%= @game.court.sport.name %><p>
   <p>  Park: <%= @game.park_name %><p>
 
 <% if @game.status == "open" %>
 	<p>Looking for More People!</p>
   <p>Players Committed: <%= @game.players_committed %></p>
   <p>Still Looking For: <%= @game.players_looking_for %> more players</p>
+  <p>Current court: <%= @game.court.sport %> 
 
 <% elsif @game.status == "closed" %>
 	<p>  Game is all full, sorry</p>

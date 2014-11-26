@@ -3,18 +3,21 @@
 
 
   <p>  User:<%= @game.user.email %></p>
-  <p>  Court:<%= @game.court.sport.name %><p>
-  <p>  Park: <%= @game.park_name %><p>
+  <p>  Sport:<%= @game.sport_name %><p>
+  <p>  Park: <%= @game.sport_name %> Court at <%= @game.park_name %><p>
+  <p>  Skill-Level: <%= @game.skill_level %> </p>
 
 <% if @game.status == "open" %>
 	<p>Looking for More People!</p>
   <p>Players Committed: <%= @game.players_committed %></p>
   <p>Still Looking For: <%= @game.players_looking_for %> more players</p>
-  <p>Current court: <%= @game.court.sport %> 
+  
 
 <% elsif @game.status == "closed" %>
 	<p>  Game is all full, sorry</p>
 <% end %>
 
 <a data-method="delete" href="/games/<%= @game.id %>" rel="nofollow">Remove Game</a>
+<a data-method="get" href="/games/<%= @game.id %>/edit" rel="nofollow">Modify Game</a>
+
 

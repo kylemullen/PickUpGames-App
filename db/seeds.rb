@@ -16,26 +16,32 @@ parks.each do |park|
 		number_of_basketball_courts.times do
 			Court.create(:sport_id => 1, :park_id => park["park_number"].to_i)
 		end
+
 		number_of_soccer_fields = park["footbal_soccer_combo"].to_i
 		number_of_soccer_fields.times do
 			Court.create(:sport_id => 2, :park_id => park["park_number"].to_i)
 		end
+
 		number_of_soccer_fields_2 = park["artificial_turf_fields"].to_i
 		number_of_soccer_fields_2.times do
 			Court.create(:sport_id => 2, :park_id => park["park_number"].to_i)
 		end
+
 		number_of_baseball_fields = park["baseball_sr"].to_i
 		number_of_baseball_fields.times do
 			Court.create(:sport_id => 3, :park_id => park["park_number"].to_i)
 		end
+
 		number_of_volleyball_courts = park["volleyball_sand"].to_i
 		number_of_volleyball_courts.times do
 			Court.create(:sport_id => 4, :park_id => park["park_number"].to_i)
 		end
+
 		number_of_volleyball_courts_2 = park["volleyball"].to_i
 		number_of_volleyball_courts_2.times do
 			Court.create(:sport_id => 4, :park_id => park["park_number"].to_i)
 		end
+		
 		number_of_tennis_courts = park["tennis_courts"].to_i
 		number_of_tennis_courts.times do
 			Court.create(:sport_id => 5, :park_id => park["park_number"].to_i)

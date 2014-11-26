@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141118232821) do
+ActiveRecord::Schema.define(version: 20141125030037) do
 
   create_table "courts", force: true do |t|
     t.string   "name"
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 20141118232821) do
     t.string   "status",              default: "open"
     t.integer  "players_looking_for"
     t.integer  "players_committed"
+    t.string   "skill_level"
   end
 
   create_table "neighborhoods", force: true do |t|

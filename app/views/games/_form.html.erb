@@ -1,18 +1,20 @@
 <%= form_for @game do |f| %>
 	<div>
-	<%= f.label :title %>
-	<%= f.text_field :title %>
+	<ul>
 
-	<%= f.label :how_many_players_do_you_have_already? %>
-	<%= f.text_field :players_committed %>
+	<li><%= f.label :title %>
+	<%= f.text_field :title %></li>
 
-	<%= f.label :how_many_more_are_you_looking_for? %>
-	<%= f.text_field :players_looking_for %>
+	<li><%= f.label :players_committed? %>
+	<%= f.select :players_committed, options_for_select(1..20) %></li>
 
-	<%= f.label :court_id? %>
-	<%= f.text_field :court_id %>
-	
-	</div>
+	<li><%= f.label :players_looking_for? %>
+	<%= f.select :players_looking_for, options_for_select(1..20) %></li>
+
+	<li><%= f.label :skill_level %>
+		<%= f.select :skill_level, options_for_select(["Skill Level", "Beginner", "Recreational", "Competitive"]) %></li>
+	</ul>
+</div>
 
 	<div>
 		<%= f.submit %>

@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 
   root 'games#index'
 
+  get '/games/map' => 'games#map'
+
   resources :games
   resources :neighborhoods
   resources :sports

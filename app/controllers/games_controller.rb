@@ -1,6 +1,8 @@
 class GamesController < ApplicationController
 	before_action :authenticate_user!
 
+@link = "http://localhost:3000/"
+
 	def show
 		if params[:id] == "mygame"
 			@game = Game.find_by(:user_id => current_user.id, :status => "open")
@@ -45,6 +47,9 @@ class GamesController < ApplicationController
 		flash[:danger] = "Game Removed."
 		redirect_to '/'
 
+	end
+
+	def map
 	end
 
 	private

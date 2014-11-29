@@ -4,6 +4,8 @@ class GamesController < ApplicationController
 @link = "http://localhost:3000/"
 
 	def show
+		@parks = Park.all
+
 		if params[:id] == "mygame"
 			@game = Game.find_by(:user_id => current_user.id, :status => "open")
 				# if @game.status == "closed"
@@ -16,6 +18,7 @@ class GamesController < ApplicationController
 	end
 
 	def index
+		@parks = Park.all
 		@games = Game.all
 	end
 
@@ -55,7 +58,7 @@ class GamesController < ApplicationController
 	private
 
 	def game_params
-		return params.require(:game).permit(:title, :players_committed, :players_looking_for, :court_id)
+		return params.require(:game).permit(:title, :players_committed, :players_looking_for, :court_id, :skill_level)
 	end
 
 end

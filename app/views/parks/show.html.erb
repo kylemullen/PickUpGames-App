@@ -1,0 +1,14 @@
+<h1> Welcome to: <%= @park.name %> </h1>
+
+<h2> Available Courts/Sports </h2>
+
+	<% @park.courts.each do |court| %>
+		<p><%= court.sport.name %></p>
+		<a data-method="get" href="/parks/new" rel="nofollow">Create a game at this court</a>
+
+<% end %>
+
+			  
+
+
+

@@ -17,14 +17,39 @@
         };
         var map = new google.maps.Map(document.getElementById('map-canvas'),
             mapOptions);
+
+        var markers = [];
+        <% @parks.each_with_index do |park, index| %>
+
+	        	
+
+        	<% if park.lat && park.courts %>
+		      	markers[<%= index %>] = new google.maps.Marker({
+				      position: new google.maps.LatLng(<%= park.lat %>, <%= park.lng %>),
+				      map: map,
+				      title: "<%= park.name %>"
+		  			});
+
+		  			google.maps.event.addListener(markers[<%= index %>], 'click', function() {
+    					new google.maps.InfoWindow({
+      					content: "<a href='/parks/<%= park.id %>'><%= park.name %></a>"
+  							}).open(map,markers[<%= index %>]);
+ 						 });
+		  			<% end %>
+
+      <% end %>
       }
       google.maps.event.addDomListener(window, 'load', initialize);
+
+      
+      
     </script>
   </head>
 
 	
 	<body>
-		
+		<h1>Welcome to Game-Match-Set</h1>
+
 		<div id="map-canvas"></div>
 
 		<h1> List of Current Games </h1>
@@ -33,40 +58,36 @@
 		<% @games.each do |game| %>
 
 		<div class="column">
-		 
-		  	<p>15&nbsp;Game:<%= game.title %></p>
-		  	<p>15&nbsp;Status:<%= game.status %></p>
-		  	<p>15&nbsp;User:<%= game.user.email %></p>
+		 <ul>
+		  	<li>Game:  <%= game.title %></li>
+		  	<li>Status:  <%= game.status %></li>
+		  	<li>User:  <%= game.first_name %> <%= game.last_name %> </li>
+		 </ul>
 		  	
 		<% end %>
 		
-
-			<a href="<%= @link %>">Home</a>
+		<ul>
+			<li><a href="<%= @link %>">Home</a></li>
 		  </br>
-			<a href="<%= @link %>games/mygame">My Game</a>
+			<li><a href="<%= @link %>games/mygame">My Game</a></li>
 			</br>
-			<a href="<%= @link %>games/new">Create a new game</a>
+			<li><a href="<%= @link %>games/new">Create a new game</a></li>
 		   </br>
+		</ul>
 
 			<% if user_signed_in? %>
-
-			  <a href="http://users/sign_in">Sign Out</a>
-
+				<ul>
+			  	<li><a href="/users/sign_in">Sign Out</a></li>
+			  </ul>
 			<% else %>
-
-				<a href="http://users/sign_in">Sign In</a>
-				<a href="http://users/sign_up">Sign Up</a>
+				<ul>
+					<li><a href="/users/sign_in">Sign In</a></li>
+					<li><a href="/users/sign_up">Sign Up</a></li>
+				</ul>
 
  
 			<% end %>
 
-
-
-
-
-
-		  
-		  
 	</body>
 </html>
 

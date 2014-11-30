@@ -30,6 +30,7 @@ class GamesController < ApplicationController
 	end
 
 	def new
+		@court_id = params[:court_id]
 	  @game = Game.new
 	end
 

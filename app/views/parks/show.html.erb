@@ -2,9 +2,13 @@
 
 <h2> Available Courts/Sports </h2>
 
-	<% @park.courts.each do |court| %>
-		<p><%= court.sport.name %></p>
-		<a data-method="get" href="/parks/new" rel="nofollow">Create a game at this court</a>
+<div class="column">
+		<% @park.courts.each do |court| %>
+		<ul>
+			<li><%= court.sport.name %></li>
+			<li><a data-method="get" href="/games/new?court_id=<%= court.id %>" rel="nofollow">Create a game at this court</a></li>
+		</ul>
+</div>
 
 <% end %>
 

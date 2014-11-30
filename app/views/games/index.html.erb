@@ -23,7 +23,7 @@
 
 	        	
 
-        	<% if park.lat && park.courts %>
+        	<% if park.lat && park.courts.any? %>
 		      	markers[<%= index %>] = new google.maps.Marker({
 				      position: new google.maps.LatLng(<%= park.lat %>, <%= park.lng %>),
 				      map: map,
@@ -52,17 +52,22 @@
 
 		<div id="map-canvas"></div>
 
-		<h1> List of Current Games </h1>
+		<h1> Games Available Now </h1>
 
-		<div class="row">
-		<% @games.each do |game| %>
+	
+			<% games = [] %>
+			<% 4.times do %>
+				<% games << @games.sample %>
+			<% end %>
 
 		<div class="column">
-		 <ul>
-		  	<li>Game:  <%= game.title %></li>
+			<% games.each do |game| %>
+		 	<ul>
+		  	<li>Game:<a href="<%= @link %>/games/<%= game.id %>"><%= game.title %></a></li>
 		  	<li>Status:  <%= game.status %></li>
 		  	<li>User:  <%= game.first_name %> <%= game.last_name %> </li>
 		 </ul>
+		</div>
 		  	
 		<% end %>
 		

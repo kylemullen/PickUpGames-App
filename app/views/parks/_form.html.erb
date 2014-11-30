@@ -13,6 +13,7 @@
 		<li><%= f.label :skill_level %>
 			<%= f.select :skill_level, options_for_select(["Beginner", "Recreational", "Competitive"]) %></li>
 	</ul>
+	<%= f.hidden_field :court_id, value: @court_id %>
 </div>
 	<div>
 		<%= f.submit %>

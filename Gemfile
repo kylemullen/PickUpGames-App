@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 gem 'devise'
 
-gem 'bootstrap-sass'
+# gem 'bootstrap-sass'
 gem 'unirest'
 
 

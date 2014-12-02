@@ -10,6 +10,10 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
+ *= require bootstrap.min
+ *= require paperclip/style
+ *= require paperclip/lightbox
+ *= require paperclip/style_blue-chill
  *= require_tree .
  *= require_self
  */

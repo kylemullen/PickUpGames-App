@@ -14,7 +14,18 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
+//= require bootstrap.min
+//= require paperclip/jquery.plugin
+//= require paperclip/coming-soon
+//= require paperclip/index
+//= require paperclip/jquery.countdown.min
+//= require paperclip/lightbox-2.6.min
+//= require paperclip/pricing-table
+//= require paperclip/scrolltopcontrol
+//= require paperclip/search-results
+//= require paperclip/sign-up
+//= require paperclip/ui-elements
+//= require paperclip/custom
 //= require_tree .
 
 

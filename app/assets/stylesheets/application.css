@@ -13,17 +13,11 @@
  *= require bootstrap.min
  *= require paperclip/style
  *= require paperclip/lightbox
- *= require paperclip/style_blue-chill
+ *= require paperclip/style_cinnabar
  *= require_tree .
  *= require_self
  */
 
- .application {
- 		margin-left:10em;
-
-
-
-}
 
 
 

@@ -17,5 +17,9 @@ class Game < ActiveRecord::Base
 	def last_name
 		user.last_name
 	end
+
+	def email
+		user.email
+	end
 	
 end

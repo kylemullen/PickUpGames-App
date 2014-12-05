@@ -8,6 +8,10 @@ Created:        11/03/2014
 Last change:    14/08/2014
 -------------------------------------------------------------------*/
 /*! normalize.css v3.0.1 | MIT License | git.io/normalize */
+.white-text {
+  color: white;
+}
+
 html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
@@ -4054,6 +4058,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   border-bottom-left-radius: 0;
 }
 .navbar-btn {
+  color: white;
   margin-top: 15.5px;
   margin-bottom: 15.5px;
 }

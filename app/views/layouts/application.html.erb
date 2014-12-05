@@ -1,13 +1,18 @@
 <!DOCTYPE html>
 <html>
+
+
 <head>
   <title>Game-Match-Set</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700' rel='stylesheet' type='text/css'>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
-  <script type="text/javascript"
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCXgnWnrHcxQ0i1E9k2cWmfC_mRzwru97A">
-    </script>
+  
+
+  
+
 </head>
 <body>
 
@@ -21,20 +26,21 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="index.html"><img src="img/logo.png" alt="..."></a>
+        <!-- Where the NavBar starts -->
         </div>
         <div class="collapse navbar-collapse">
-          <button class="navbar-btn btn btn-theme-primary pull-right hidden-sm hidden-xs">Sign In</button>
+          <% if current_user %>
+            <button class="navbar-btn btn btn-theme-primary pull-right hidden-sm hidden-xs z white-text"><a href="/users/sign_out" data-method="delete">Sign Out</a></button>
+          <% else %>
+            <button class="navbar-btn btn btn-theme-primary pull-right hidden-sm hidden-xs"><a href="/users/sign_up">Sign Up</a></button>
+            <button class="navbar-btn btn btn-theme-primary pull-right hidden-sm hidden-xs"><a href="/users/sign_in">Sign In</a></button>
+          <% end %> 
           <ul class="nav navbar-nav navbar-right">
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Home <b class="caret"></b></a>
-              <ul class="dropdown-menu">
-                <li><a href="index.html">Home: Default</a></li>
-                <li><a href="index-full.html">Home: Fullscreen</a></li>
-              </ul>
+            <li class="hidden-sm">
+              <a href="/games">Games</a>
             </li>
             <li class="dropdown active">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages <b class="caret"></b></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Map<b class="caret"></b></a>
               <ul class="dropdown-menu">
                 <li class="dropdown-submenu">
                   <a href="javascript:void(0);">About Us</a>
@@ -77,15 +83,11 @@
                 <li><a href="error-page.html">404 Error Page</a></li>
               </ul>
             </li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Portfolio <b class="caret"></b></a>
-              <ul class="dropdown-menu">
-                <li><a href="portfolio.html">Portfolio</a></li>
-                <li><a href="portfolio-item.html">Portfolio Item</a></li>
-              </ul>
+            <li class="hidden-sm">
+              <a href="/games/new">Start a New Game</a>
             </li>
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Blog <b class="caret"></b></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Links<b class="caret"></b></a>
               <ul class="dropdown-menu">
                 <li class="dropdown-submenu">
                   <a href="javascript:void(0);">Blog</a>
@@ -105,17 +107,11 @@
                 </li>
               </ul>
             </li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Shop <b class="caret"></b></a>
-              <ul class="dropdown-menu">
-                <li><a href="shop.html">Shop</a></li>
-                <li><a href="shop-item.html">Shop Item</a></li>
-                <li><a href="shopping-cart.html">Shopping Cart</a></li>
-                <li><a href="user-profile.html">User Profile</a></li>
-              </ul>
+            <li class="hidden-sm">
+              <a href="/games/mygame">My Current Game</a>
             </li>
             <li class="hidden-sm">
-              <a href="ui-elements.html">UI Elements</a>
+              <a href="">My Profile</a>
             </li>
             <!-- Navbar Search -->
             <li class="hidden-xs" id="navbar-search">
@@ -144,6 +140,8 @@
         </div><!--/.nav-collapse -->
       </div>
     </div> <!-- / .navigation -->
+
+
 
 
 <div class="wrapper">

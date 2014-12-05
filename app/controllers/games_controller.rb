@@ -1,5 +1,5 @@
 class GamesController < ApplicationController
-	before_action :authenticate_user!
+	# before_action :authenticate_user!
 
 @link = "http://localhost:3000/"
 
@@ -26,7 +26,7 @@ class GamesController < ApplicationController
 	  @game = current_user.games.create(game_params)
 	  ## ^^^^^long syntax for this.  Don't have to use the "merge"
 	  #@game = Game.create(game_params.merge({:user_id => current_user.id}))
-	  redirect_to '/'
+	  redirect_to @game
 	end
 
 	def new

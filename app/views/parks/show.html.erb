@@ -1,16 +1,28 @@
 <h1> Welcome to: <%= @park.name %> </h1>
 
-<h2> Available Courts/Sports </h2>
+<h2> Available Courts At this Park </h2>
 
-<div class="column">
+
+	<table class="table table-striped">
+		<tr>
+			<th></th>
+			<th>Sport</th>
+			<th>Game Launch</th>
+			<% @count = 1%>
 		<% @park.courts.each do |court| %>
-		<ul>
-			<li><%= court.sport.name %></li>
-			<li><a data-method="get" href="/games/new?court_id=<%= court.id %>" rel="nofollow">Create a game at this court</a></li>
-		</ul>
-</div>
+		<tr>
+			<td><%= @count %></td>
+			<td><%= court.sport.name %></td>
+			<td>><a data-method="get" href="/games/new?court_id=<%= court.id %>">Create a game at this court</a></td>
+		</tr>
+			<% @count = @count + 1 %>
+		<% end %>
+	</table>
 
-<% end %>
+
+
+
+
 
 			  
 

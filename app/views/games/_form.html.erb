@@ -1,23 +1,24 @@
 <%= form_for @game do |f| %>
-<div>
-	<ul>
-		<li><%= f.label :title %>
-		<%= f.text_field :title %></li>
-
-		<li><%= f.label :players_committed %>
-		<%= f.select :players_committed, options_for_select(1..20) %></li>
-
-		<li><%= f.label :players_looking_for %>
-		<%= f.select :players_looking_for, options_for_select(1..20) %></li>
-
-		<li><%= f.label :skill_level %>
-			<%= f.select :skill_level, options_for_select(["Beginner", "Recreational", "Competitive"]) %></li>
-
-	</ul>
-			<%= f.hidden_field :court_id, value: @court_id %>
-			
-</div>
 	<div>
-		<%= f.submit %>
+		<ul>
+			<li><%= f.label :title %>
+			<%= f.text_field :title %></li>
+
+			<li><%= f.label :players_committed %>
+			<%= f.select :players_committed, options_for_select(1..20) %></li>
+
+			<li><%= f.label :players_looking_for %>
+			<%= f.select :players_looking_for, options_for_select(1..20) %></li>
+
+			<li><%= f.label :skill_level %>
+				<%= f.select :skill_level, options_for_select(["Beginner", "Recreational", "Competitive"]) %></li>
+
+		</ul>
+				<%= f.hidden_field :court_id, value: @court_id %>
 	</div>
+
+		<div>
+			<%= f.submit %>
+		</div>
+		
 <% end %>

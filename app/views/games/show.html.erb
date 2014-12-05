@@ -1,21 +1,22 @@
-<h1> Your Game: <%= @game.title %> </h1>
+<h1> The Game: <%= @game.title %> -- <%= @game.sport_name %> </h1>
 
-		  <p>  User:<%= @game.user.email %></p>
-		  <p>  Sport:<%= @game.sport_name %><p>
-		  <p>  Park: <%= @game.sport_name %> Court at <%= @game.park_name %></p>
-		  <p>  Skill-Level: <%= @game.skill_level %> </p>
+	<ul>
+		  <h3>Created By: <%= @game.first_name %> <%= @game.last_name%>, email: <%= @game.email %></h3>
+		  <li><%= @game.sport_name %> Court at <a href="/parks/<%= @game.court.park.id %>"><%= @game.park_name %></a></li>
+		  <li>  Skill-Level: <%= @game.skill_level %> </li>
 
-	<% if @game.status == "open" %>
-			<p>Looking for More People!</p>
-		  <p>Players Committed: <%= @game.players_committed %></p>
-		  <p>Still Looking For: <%= @game.players_looking_for %> more players</p>
+			<% if @game.status == "open" %>
+				<li>Looking for More People!</li>
+			  <li>Players Committed: <%= @game.players_committed %></li>
+			  <li>Still Looking For: <%= @game.players_looking_for %> more players</li>
 		  
 
-		<% elsif @game.status == "closed" %>
-			<p>  Game is all full, sorry</p>
-		<% end %>
-
-		<a data-method="delete" href="/games/<%= @game.id %>" rel="nofollow">Remove Game</a>
-		<a data-method="get" href="/games/<%= @game.id %>/edit" rel="nofollow">Modify Game</a>
+			<% elsif @game.status == "closed" %>
+				<li>  Game is all full, sorry</li>
+			<% end %>
+	</ul>
+	
+		<button type="button" class="btn btn-danger"><a data-method="delete" href="/games/<%= @game.id %>" rel="nofollow">Remove Game</a></button>
+		<button type="button" class="btn btn-info"><a data-method="get" href="/games/<%= @game.id %>/edit" rel="nofollow">Modify Game</a></button>
 
 

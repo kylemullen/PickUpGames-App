@@ -1,5 +1,5 @@
 class ParksController < ApplicationController
-	# before_action :authenticate_admin!, :only => [:edit, :destroy, :new, :update, :create]
+	before_action :authenticate_admin!, :only => [:edit, :destroy, :new, :update, :create]
 
 
 	def create

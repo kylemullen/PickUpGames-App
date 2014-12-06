@@ -1,4 +1,27 @@
 <h1>Create Your Game</h>
+	<div ng-app="app">
+		<div ng-controller="sportsCtrl">
+			<form name="myForm">	
+		   <ul> 	
+				<li><label>Title of Game:</label>
+		    	<input ng-model="sportTitle"></li>
+		    <li><label>Players</label>
+		    	<input ng-model="sportPlayers"></li>
+		    <li><label>Skill Level</label>
+		    	<input type="radio" ng-model="sportSkill" value="Beginner, Recreactional">Beginner</li>
+		    	
+		    <input ng-model ="sportCourt" type="hidden" data="">
+		    
 
-<%= render "form" %>
+		    <button ng-click="addSport(sportTitle, sportSkill, sportPlayers)">Add Sport</button>
+
+
+
+
+
+
+
+		</div>
+	</div>
+
 

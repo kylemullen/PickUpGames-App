@@ -26,6 +26,8 @@
 //= require paperclip/sign-up
 //= require paperclip/ui-elements
 //= require paperclip/custom
+//= require angular
+//= require app
 //= require_tree .
 
 

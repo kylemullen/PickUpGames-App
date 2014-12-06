@@ -50,7 +50,7 @@ class GamesController < ApplicationController
 		@game = Game.find_by(:id => params[:id])
 		@game.destroy
 		flash[:danger] = "Game Removed."
-		redirect_to '/'
+		redirect_to '/games'
 
 	end
 

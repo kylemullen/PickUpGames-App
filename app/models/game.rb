@@ -2,6 +2,14 @@ class Game < ActiveRecord::Base
 	belongs_to :user
 	belongs_to :court
 
+	validates_presence_of :title
+  validates_presence_of :players_committed
+  validates_presence_of :players_looking_for
+  validates_presence_of :court_id
+  validates_presence_of :skill_level
+  validates_presence_of :user_id
+  
+
 	def park_name
 		court.park.name
 	end

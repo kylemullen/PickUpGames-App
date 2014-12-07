@@ -9,10 +9,6 @@ class GamesController < ApplicationController
 
 		if params[:id] == "mygame"
 			@game = Game.find_by(:user_id => current_user.id, :status => "open")
-				# if @game.status == "closed"
-				# 	redirect_to "/games/new"
-				# else @game.status == "open"
-				# 	Game.find_by
 		else
 			@game = Game.find_by(:id => params[:id])
 		end

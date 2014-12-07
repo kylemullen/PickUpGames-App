@@ -11,7 +11,7 @@ class Api::V1::GamesController < ApplicationController
 	end
 
 	def create
- 	  @game = game.new(game_params)
+ 	  @game = current_user.game.create(game_params)
 	  if @game.save
 	  else
       render json: { errors: @game.errors.full_messages }, status: 422
@@ -31,6 +31,12 @@ class Api::V1::GamesController < ApplicationController
 	private 
 
 	def game_params
-		return params.require(:game).permit(:title, :court_id, :players_committed, :players_looking_for, :status)
+		return params.require(:game).permit(:title, :court_id, :players_committed, :players_looking_for, :skill_level)
 	end
+
+	def restrict_access
+    authenticate_or_request_with_http_token do |api_key, options|
+      User.find_by(:email => request.headers["X-User-Email"], :api_key => api_key)
+    end
+  end
 end

@@ -1,7 +1,7 @@
-<h1> Welcome to: <%= @park.name %> </h1>
+<h1> Welcome to <%= @park.name.capitalize %> Park </h1>
 
-<h2> Available Courts At this Park </h2>
-
+<h3> Available Courts At this Park </h3>
+<a href="http://www.google.com/maps/<%= @park.name %>, Chicago/<%= @park.lat.to_i.round(6) %>,-<%= @park.lng.to_i.round(6) %>,18z">Get Directions to this Park</a>
 
 	<table class="table table-striped">
 		<tr>
@@ -13,7 +13,7 @@
 		<tr>
 			<td><%= @count %></td>
 			<td><%= court.sport.name %></td>
-			<td>><a data-method="get" href="/games/new?court_id=<%= court.id %>">Create a game at this court</a></td>
+			<td><a data-method="get" href="/games/new?court_id=<%= court.id %>">Create a game at this court</a></td>
 		</tr>
 			<% @count = @count + 1 %>
 		<% end %>

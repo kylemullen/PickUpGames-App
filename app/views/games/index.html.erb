@@ -33,17 +33,9 @@
       }
       google.maps.event.addDomListener(window, 'load', initialize);
 
-      
-      
     </script>
 
-
 <h1> Games Happening Now </h1>
-
-		<% games = [] %>
-		<% 4.times do %>
-				<% games << @games.sample %>
-		<% end %>
 
 	<table class="table table-bordered">
 		<tr>
@@ -57,8 +49,11 @@
 			<th>Players Looking For</th>
 			<th>Commit</th>
 		</tr>
-				<% @count = 1%>
-				<% games.each do |game| %>
+
+		<% games = [] %>
+		<% games = @games.sample(4) %>
+		<% @count = 1%>
+		<% games.each do |game| %>
 		<tr>
 			<td><%= @count %></td>
 			<td><%= game.title %></td>

@@ -1,3 +1,4 @@
+<h1><%= @sport_id %></h1>
 <script type="text/javascript"
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCXgnWnrHcxQ0i1E9k2cWmfC_mRzwru97A">
   	</script>
@@ -9,12 +10,14 @@
         };
         var map = new google.maps.Map(document.getElementById('map-canvas'),
             mapOptions);
-        var sportFilter = <%= @sport_id %>
+        var sportFilter = <%= @sport_id %>;
         var markers = [];
 
-        <% @parks.each_with_index do |park, index| %>
+    <% @parks.each_with_index do |park, index| %>
 
-        	<% if park.lat && park.courts.each.sport_id == @sport_id%>
+      <% if park.lat %>
+        <% park.courts.each do |court| %>
+          <% if court.sport_id == @sport_id %>
             
               
 		      	  markers[<%= index %>] = new google.maps.Marker({
@@ -30,8 +33,9 @@
  						 });
 		  			 
           <% end %>
-      
+        <% end %>
       <% end %>
+    <% end %>
       }
       google.maps.event.addDomListener(window, 'load', initialize);
 

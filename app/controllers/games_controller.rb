@@ -6,17 +6,20 @@ class GamesController < ApplicationController
 
 	def show
 		@parks = Park.all
-
+		@sports = Sport.all
 		if params[:id] == "mygame"
 			@game = Game.find_by(:user_id => current_user.id, :status => "open")
 		else
 			@game = Game.find_by(:id => params[:id])
 		end
+		@parks = Park.joins(:sports).where("sports.name = ?", params[:sport]) if params[:sport]
 	end
 
 	def index
+		@sports = Sport.all
 		@parks = Park.all
 		@games = Game.all
+		@parks = Park.joins(:sports).where("sports.name = ?", params[:sport]) if params[:sport]
 	end
 
 	def create
@@ -24,15 +27,18 @@ class GamesController < ApplicationController
 	  ## ^^^^^long syntax for this.  Don't have to use the "merge"
 	  #@game = Game.create(game_params.merge({:user_id => current_user.id}))
 	  redirect_to @game
+	  @sports = Sport.all
 	end
 
 	def new
 		@court_id = params[:court_id]
 	  @game = Game.new
+	  @sports = Sport.all
 	end
 
 	def edit
 		@game = Game.find_by(:id => params[:id])
+		@sports = Sport.all
 	end
 
 	def update
@@ -40,6 +46,7 @@ class GamesController < ApplicationController
 		@game.update(params[:game])
 		flash[:info] = "Game Succesfully Modified."
 		redirect_to @game
+		@sports = Sport.all
 	end
 
 	def destroy
@@ -47,10 +54,15 @@ class GamesController < ApplicationController
 		@game.destroy
 		flash[:danger] = "Game Removed."
 		redirect_to '/games'
+		@sports = Sport.all
 
 	end
 
 	def map
+	end
+
+	def home
+		@sports = Sport.all
 	end
 
 	private

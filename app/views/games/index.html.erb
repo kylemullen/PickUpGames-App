@@ -1,6 +1,37 @@
+<h1> Games Happening Now </h1>
+	<table class="table table-bordered">
+		<tr>
+			<th></th>
+			<th>Game Title</th>
+			<th>Sport</th>
+			<th>Park</th>
+			<th>Skill Level</th>
+			<th>Creator</th>
+			<th>Players Commited</th>
+			<th>Players Looking For</th>
+			<th>Commit</th>
+		</tr>
 
+		<% games = [] %>
+		<% games = @games.sample(4) %>
+		<% @count = 1%>
+		<% games.each do |game| %>
+		<tr>
+			<td><%= @count %></td>
+			<td><%= game.title %></td>
+			<td><%= game.court.sport.name %></td>
+			<td><a href="parks/<%= game.court.park.id %>"><%= game.court.park.name.capitalize %></a></td>
+			<td><%= game.skill_level %></td>
+			<td><%= game.first_name %></td>
+			<td><%= game.players_committed %></td>
+			<td><%= game.players_looking_for %></td>
+			<td><button type="button" class="btn btn-default"><a href="<%= @link %>/games/<%= game.id %>">Commit To Game</a></button></td>
+		</tr>
+				<% @count = @count + 1 %>
+				<% end %>
+	</table>
 
-    <script type="text/javascript"
+<script type="text/javascript"
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCXgnWnrHcxQ0i1E9k2cWmfC_mRzwru97A">
   	</script>
     <script type="text/javascript">
@@ -34,38 +65,4 @@
       google.maps.event.addDomListener(window, 'load', initialize);
 
     </script>
-
-<h1> Games Happening Now </h1>
-
-	<table class="table table-bordered">
-		<tr>
-			<th></th>
-			<th>Game Title</th>
-			<th>Sport</th>
-			<th>Park</th>
-			<th>Skill Level</th>
-			<th>Creator</th>
-			<th>Players Commited</th>
-			<th>Players Looking For</th>
-			<th>Commit</th>
-		</tr>
-
-		<% games = [] %>
-		<% games = @games.sample(4) %>
-		<% @count = 1%>
-		<% games.each do |game| %>
-		<tr>
-			<td><%= @count %></td>
-			<td><%= game.title %></td>
-			<td><%= game.court.sport.name %></td>
-			<td><%= game.court.park.name.capitalize %></td>
-			<td><%= game.skill_level %></td>
-			<td><%= game.first_name %></td>
-			<td><%= game.players_committed %></td>
-			<td><%= game.players_looking_for %></td>
-			<td><button type="button" class="btn btn-default"><a href="<%= @link %>/games/<%= game.id %>">Commit To Game</a></button></td>
-		</tr>
-				<% @count = @count + 1 %>
-				<% end %>
-	</table>
 <div id="map-canvas"></div>

@@ -1,6 +1,6 @@
 <h1>Create Your Game</h1>
 	<div ng-app="app">
-		<div ng-controller="gamesCtrl">
+		<div ng-controller="gamesCtrl" ng-init="gameCourtId = <%= @court_id %>; userId = <%= current_user.id %>">
 			<form name="myForm">	
 		   <ul> 	
 				<li><label>Title of Game:</label>
@@ -16,10 +16,9 @@
 		    	<input type="radio" ng-model="gameSkill" value="Beginner">Beginner
 		    	<input type="radio" ng-model="gameSkill" value="Recreational">Recreational<input type="radio" ng-model="gameSkill" value="Competitive">Competitive</li>
 		    	
-		    <input type="hidden" ng-model ="gameCourt" data="<%= @court_id %>">
-		    <li><label>Court ID</label><input ng-model="gameCourt"></li>
+		    
 
-		    <button ng-click="addGame(gameTitle, gamePlayersCommitted, gamePlayersLookingFor, gameSkill, gameCourt)">Add game</button>
+		    <button ng-click="addGame(gameTitle, gamePlayersCommitted, gamePlayersLookingFor, gameSkill, gameCourtId, userId)">Add game</button>
 
 
 		</div>

@@ -2,7 +2,7 @@ class GamesController < ApplicationController
 	# before_action :authenticate_user!
 	respond_to :xml, :json, :html
 
-	@link = "http://localhost:3000/"
+	
 
 	def show
 		@parks = Park.all

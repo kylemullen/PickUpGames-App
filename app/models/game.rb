@@ -8,6 +8,7 @@ class Game < ActiveRecord::Base
   validates_presence_of :court_id
   validates_presence_of :skill_level
   validates_presence_of :user_id
+  # validates_uniqueness_of :court_id
   
 
 	def park_name

@@ -1,3 +1,26 @@
 <h1> Adjust Your Game </h1>
 
-<%= render "form" %>
+<div ng-app="app">
+		<div ng-controller="gamesCtrl" ng-init="gameCourtId = <%= @court_id %>; userId = <%= current_user.id %>">
+			<form name="myForm">	
+		   <ul> 	
+				<li><label>Title of Game:</label>
+		    	<input ng-model="gameTitle"></li>
+
+		    <li><label>Players You Have</label>
+		    	<input ng-model="gamePlayersCommitted"></li>
+
+		    <li><label>Players You Need</label>
+		    	<input ng-model="gamePlayersLookingFor"></li>
+
+		    <li><label>Skill Level</label>
+		    	<input type="radio" ng-model="gameSkill" value="Beginner">Beginner
+		    	<input type="radio" ng-model="gameSkill" value="Recreational">Recreational<input type="radio" ng-model="gameSkill" value="Competitive">Competitive</li>
+		    	
+		    
+
+		    <button ng-click="addGame(gameTitle, gamePlayersCommitted, gamePlayersLookingFor, gameSkill, gameCourtId, userId)">Modify game</button>
+
+
+		</div>
+	</div>

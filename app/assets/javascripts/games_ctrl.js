@@ -11,6 +11,11 @@
       var newGame = { title: gameTitle, court_id: gameCourtId, players_committed: gamePlayersCommitted, players_looking_for: gamePlayersLookingFor, skill_level: gameSkill, user_id: userId};
       $http.post('/api/v1/games.json', {game: newGame}).then(function(response) {
         $scope.games.push(newGame);
+        $scope.gameTitle = "";
+        $scope.gamePlayersCommitted = "";
+        $scope.gamePlayersLookingFor = "";
+        $scope.gameSkill = "";
+
 
 
         }, function (error) {

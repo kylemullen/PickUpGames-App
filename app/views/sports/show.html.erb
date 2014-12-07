@@ -1,0 +1,38 @@
+<script type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCXgnWnrHcxQ0i1E9k2cWmfC_mRzwru97A">
+  	</script>
+    <script type="text/javascript">
+      function initialize() {
+        var mapOptions = {
+          center: { lat: 41.87811, lng: -87.62980},
+          zoom: 11
+        };
+        var map = new google.maps.Map(document.getElementById('map-canvas'),
+            mapOptions);
+        var sportFilter = <%= @sport_id %>
+        var markers = [];
+
+        <% @parks.each_with_index do |park, index| %>
+
+        	<% if park.lat && park.courts.each.sport_id == @sport_id%>
+            
+              
+		      	  markers[<%= index %>] = new google.maps.Marker({
+				      position: new google.maps.LatLng(<%= park.lat %>, <%= park.lng %>),
+				      map: map,
+				      title: "<%= park.name %>"
+		  			});
+
+		  			google.maps.event.addListener(markers[<%= index %>], 'click', function() {
+    					new google.maps.InfoWindow({
+      					content: "<a href='/parks/<%= park.id %>'><%= park.name %></a>"
+  							}).open(map,markers[<%= index %>]);
+ 						 });
+		  			 
+          <% end %>
+      
+      <% end %>
+      }
+      google.maps.event.addDomListener(window, 'load', initialize);
+
+    </script>

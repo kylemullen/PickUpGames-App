@@ -11,6 +11,8 @@ class SportsController < ApplicationController
 	end
 
 	def show
+		@parks = Park.all
+		@sport_id = params[:sport]
 	end
 
 	def destroy

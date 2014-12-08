@@ -15,11 +15,8 @@
 
     <% @parks.each_with_index do |park, index| %>
 
-      <% if park.lat %>
-        <% park.courts.each do |court| %>
-          <% if court.sport_id == @sport_id %>
-            
-              
+        <% if park.lat %>
+        
 		      	  markers[<%= index %>] = new google.maps.Marker({
 				      position: new google.maps.LatLng(<%= park.lat %>, <%= park.lng %>),
 				      map: map,
@@ -32,10 +29,8 @@
   							}).open(map,markers[<%= index %>]);
  						 });
 		  			 
-          <% end %>
-        <% end %>
       <% end %>
-    <% end %>
+  <% end %>
       }
       google.maps.event.addDomListener(window, 'load', initialize);
 

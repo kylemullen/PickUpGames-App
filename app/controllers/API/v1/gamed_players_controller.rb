@@ -10,9 +10,9 @@ respond_to :xml, :json, :html
 	end
 
 	def create
- 	  @gamed_player = GamedPlayer.new(GamedPlayer_params)
+ 	  @gamed_player = GamedPlayer.new(gamed_player_params)
 	  if @gamed_player.save
-	  	redirect_to @gamed_player
+	  	redirect_to '/'
 	  else
       render json: { errors: @gamed_player.errors.full_messages }, status: 422
     end
@@ -26,13 +26,13 @@ respond_to :xml, :json, :html
 
 	def update
 	  @gamed_player = GamedPlayer.find_by(:id => params[:id])
-	  @gamed_player.update(GamedPlayer_params)
+	  @gamed_player.update(gamed_player_params)
 	end
 
 	private 
 
-	def GamedPlayer_params
-		return params.require(:GamedPlayer).permit(:user_id, :game_id, :players_bringing)
+	def gamed_player_params
+		return params.require(:gamed_player).permit(:user_id, :game_id, :players_bringing)
 	end
 
 	def restrict_access

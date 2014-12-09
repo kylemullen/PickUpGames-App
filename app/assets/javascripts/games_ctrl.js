@@ -29,7 +29,17 @@
           $scope.errors = error.data.errors;
         });
            
-      
+    };
+
+    $scope.addGamedPlayer = function (userId, gameId, playersBringing) {
+      var newGamedPlayer = { user_id: userId, game_id: gameId, players_bringing: playersBringing};
+      $http.post('/api/v1/gamed_players.json', {gamed_player: newGamedPlayer}).then(function(response)
+          {
+          $scope.gamed_players.push(newGamedPlayer);
+          
+          }, function (error) {
+            $scope.errors = error.data.errors;
+          });
 
     };
     

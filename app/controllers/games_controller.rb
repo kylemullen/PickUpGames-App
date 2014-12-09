@@ -2,8 +2,6 @@ class GamesController < ApplicationController
 	# before_action :authenticate_user!
 	respond_to :xml, :json, :html
 
-	
-
 	def show
 		@parks = Park.all
 		@sports = Sport.all

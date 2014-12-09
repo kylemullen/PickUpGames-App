@@ -1,0 +1,16 @@
+<div ng-app="app">
+	<div ng-controller="gamesCtrl">
+			<h5>Know The Name of the Park? Enter it Here</h5>
+			<input ng-model="parkFilter">
+			<table>
+				<tr>
+					<th>Park Name</th>
+				</tr>
+
+				<tr ng-repeat="park in parks | filter: { name: parkFilter } | orderBy:orderAttribute:sortDirection">
+					<td><a href="/parks/{{ park.id }}">{{ park.name }}</a></td>
+				</tr>
+			</table>
+
+	</div>
+</div>

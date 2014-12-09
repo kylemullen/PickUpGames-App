@@ -2,6 +2,15 @@ Rails.application.routes.draw do
 
   devise_for :users
 
+  root 'games#home'
+
+  resources :games
+  resources :neighborhoods
+  resources :sports
+  resources :courts
+  resources :parks
+  resources :gamed_players
+
   namespace :api do
     namespace :v1 do
      resources :games
@@ -14,14 +23,11 @@ Rails.application.routes.draw do
     end
   end
 
-  root 'games#home'
-
-  resources :games
-  resources :neighborhoods
-  resources :sports
-  resources :courts
-  resources :parks
-  resources :gamed_players
+  namespace :api do
+    namespace :v1 do
+      resources :parks
+    end
+  end
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

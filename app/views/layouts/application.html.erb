@@ -54,19 +54,25 @@
               </ul>
             </li>
             <li class="hidden-sm">
-              <a href="/games/new">Start a New Game</a>
+              <% if current_user %>
+                <a href="/games/new">Start a New Game</a>
+              <% end %>
             </li>
             <li class="hidden-sm">
-              <a href="/games/mygame">My Current Game</a>
+              <% if current_user && Game.find_by(:user_id => current_user.id, :status => "open") %>
+                <a href="/games/mygame">My Current Game</a>
+              <% end %>
             </li>
             <li class="hidden-sm">
-              <a href="">My Profile</a>
+              <% if current_user %>
+                <a href="">My Profile</a>
             </li>
             <!-- Navbar Search -->
             <li class="hidden-xs" id="navbar-search">
               <a href="#">
                 <i class="fa fa-search"></i>
-              </a>
+              <% end %>
+            </a>
               <div class="hidden" id="navbar-search-box">
                 <div class="input-group">
                   <input type="text" class="form-control" placeholder="Search">

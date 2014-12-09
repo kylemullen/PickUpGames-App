@@ -1,34 +1,34 @@
 <div ng-app="app">
-		<div ng-controller="gamesCtrl" ng-init="gameId = <%= @game.id %>; userId = <%= current_user.id %>">
-<h1> The Game: <%= @game.title %> -- <%= @game.sport_name %> </h1>
+	<div ng-controller="gamesCtrl" ng-init="gameId = <%= @game.id %>; userId = <%= current_user.id %>">
+			<h1> The Game: <%= @game.title %> -- <%= @game.sport_name %> </h1>
 
-	<ul>
-		  <h3>Created By: <%= @game.first_name %> <%= @game.last_name%>, email: <%= @game.email %></h3>
-		  <li><%= @game.sport_name %> Court at <a href="/parks/<%= @game.court.park.id %>"><%= @game.park_name.capitalize %></a></li>
-		  <li>  Skill-Level: <%= @game.skill_level %> </li>
+				<ul>
+					  <h3>Created By: <%= @game.first_name %> <%= @game.last_name%>, email: <%= @game.email %></h3>
+					  <li><%= @game.sport_name %> Court at <a href="/parks/<%= @game.court.park.id %>"><%= @game.park_name.capitalize %></a></li>
+					  <li>  Skill-Level: <%= @game.skill_level %> </li>
 
-			<% if @game.status == "open" %>
-				<li>Looking for More People!</li>
-			  <li>Players Committed: <%= @game.players_committed %></li>
-			  <li>Still Looking For: <%= @game.players_looking_for %> more players</li>
+						<% if @game.status == "open" %>
+							<li>Looking for More People!</li>
+						  <li>Players Committed: <%= @game.players_committed %></li>
+						  <li>Still Looking For: <%= @game.players_looking_for %> more players</li>
 
-			<% elsif @game.status == "closed" %>
-				<li>  Game is all full, sorry</li>
-			<% end %>
+						<% elsif @game.status == "closed" %>
+							<li>  Game is all full, sorry</li>
+						<% end %>
 
-	</ul>
+				</ul>
 
-	<% if @game.user_id == current_user.id %>
-		<button type="button" class="btn btn-danger"><a data-method="delete" href="/games/<%= @game.id %>" rel="nofollow">Remove Game</a></button>
-		<button type="button" class="btn btn-info"><a data-method="get" href="/games/<%= @game.id %>/edit" rel="nofollow">Modify Game</a></button>
+				<% if @game.user_id == current_user.id %>
+					<button type="button" class="btn btn-danger"><a data-method="delete" href="/games/<%= @game.id %>" rel="nofollow">Remove Game</a></button>
+					<button type="button" class="btn btn-info"><a data-method="get" href="/games/<%= @game.id %>/edit" rel="nofollow">Modify Game</a></button>
 
 
-	<% elsif current_user %>
-	
-		 <h1> Sign up for this Game</h1>
-		<input ng-model="playersBringing">
-		<button ng-click="addGamedPlayer(userId, gameId, playersBringing)">Sign Up For This Game</button>
+				<% elsif current_user %>
+				
+					 <h1> Sign up for this Game</h1>
+					<input ng-model="playersBringing">
+					<button ng-click="addGamedPlayer(userId, gameId, playersBringing)">Sign Up For This Game</button>
 
-	<% end %>
-</div>
+				<% end %>
+	</div>
 </div>

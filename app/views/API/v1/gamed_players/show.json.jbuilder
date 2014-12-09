@@ -1,0 +1,1 @@
+json.partial! @gamed_player, partial: 'gamed_player', as: :gamed_player

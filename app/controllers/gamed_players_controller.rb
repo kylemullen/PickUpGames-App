@@ -5,7 +5,7 @@ class GamedPlayersController < ApplicationController
 
 	def create
 		if Game.find_by(:user_id => current_user.id, :status => "open")
-			@
+			
 
 		elsif 
 

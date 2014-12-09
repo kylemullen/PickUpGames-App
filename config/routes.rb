@@ -8,6 +8,12 @@ Rails.application.routes.draw do
     end
   end
 
+  namespace :api do
+    namespace :v1 do
+      resources :gamed_players
+    end
+  end
+
   root 'games#home'
 
   resources :games
@@ -15,6 +21,7 @@ Rails.application.routes.draw do
   resources :sports
   resources :courts
   resources :parks
+  resources :gamed_players
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

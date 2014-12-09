@@ -45,9 +45,11 @@
             <li class="dropdown active">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Map<b class="caret"></b></a>
               <ul class="dropdown-menu">
+              <%if @sports %>
                 <% @sports.each do |sport| %>
                     <li><a href="/games/?sport=<%= sport.name %>"><%= sport.name %></a></li>
                     <% end %>
+                  <% end %>
                 </li>
               </ul>
             </li>

@@ -14,18 +14,18 @@
 
 		<% games = [] %>
 		<% games = @games.sample(4) %>
-		<% @count = 1%>
+		<% @count = 1 %>
 		<% games.each do |game| %>
 		<tr>
-			<td><%= @count %></td>
-			<td><%= game.title %></td>
-			<td><%= game.court.sport.name %></td>
-			<td><a href="parks/<%= game.court.park.id %>"><%= game.court.park.name.capitalize %></a></td>
-			<td><%= game.skill_level %></td>
-			<td><%= game.first_name %></td>
-			<td><%= game.players_committed %></td>
-			<td><%= game.players_looking_for %></td>
-			<td><button type="button" class="btn btn-default"><a href="<%= @link %>/games/<%= game.id %>">Commit To Game</a></button></td>
+				<td><%= @count %></td>
+				<td><%= game.title %></td>
+				<td><%= game.court.sport.name %></td>
+				<td><a href="parks/<%= game.court.park.id %>"><%= game.court.park.name.capitalize %></a></td>
+				<td><%= game.skill_level %></td>
+				<td><%= game.first_name %></td>
+				<td><%= game.players_committed %></td>
+				<td><%= game.players_looking_for %></td>
+				<td><button type="button" class="btn btn-default"><a href="<%= @link %>/games/<%= game.id %>">Commit To Game</a></button></td>
 		</tr>
 				<% @count = @count + 1 %>
 				<% end %>

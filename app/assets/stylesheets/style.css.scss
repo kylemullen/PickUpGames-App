@@ -1,6 +1,9 @@
 #map-canvas {
 	height: 575px;
 	width: 700px;
+	border-width:5px;	
+  border-style:outset;
+  border-color: #ed3e49;
 
 }
 
@@ -25,5 +28,11 @@ background: #ed3e49;
 
 .map-parks {
 	float: right;
-	
+
 }
+
+.new-game {
+	
+	width: 300px;
+}
+

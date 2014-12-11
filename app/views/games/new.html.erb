@@ -38,12 +38,11 @@
 							  </div>
 							<div class="panel-body">
 					    	<input type="radio" ng-model="gameSkill" value="Beginner">Beginner
-					    	<input type="radio" ng-model="gameSkill" value="Recreational">Recreational<input type="radio" ng-model="gameSkill" value="Competitive">Competitive>
+					    	<input type="radio" ng-model="gameSkill" value="Recreational">Recreational<input type="radio" ng-model="gameSkill" value="Competitive">Competitive
 					    </div>
 				    	
 				    </div>
-
-				    <button ng-click="addGame(gameTitle, gamePlayersCommitted, gamePlayersLookingFor, gameSkill, gameCourtId, userId)">Add game</button>
+				    <button type="button" class="btn btn-danger" ng-click="addGame(gameTitle, gamePlayersCommitted, gamePlayersLookingFor, gameSkill, gameCourtId, userId)">Add game</button>
 		   
 		  </div>
 		</div>

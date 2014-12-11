@@ -2,14 +2,10 @@
 	<table class="table table-bordered">
 		<tr>
 			<th></th>
-			<th>Game Title</th>
-			<th>Sport</th>
-			<th>Park</th>
-			<th>Skill Level</th>
+			<th>Game Title/Sport</th>
+			<th>Park/Skill Level</th>
 			<th>Creator</th>
-			<th>Players Commited</th>
 			<th>Players Looking For</th>
-			<th>Commit</th>
 		</tr>
 
 		<% games = [] %>
@@ -18,14 +14,12 @@
 		<% games.each do |game| %>
 		<tr>
 				<td><%= @count %></td>
-				<td><a href="/games/<%= game.id %>"><%= game.title %></a></td>
-				<td><%= game.court.sport.name %></td>
-				<td><a href="/parks/<%= game.court.park.id %>"><%= game.court.park.name.capitalize %></a></td>
-				<td><%= game.skill_level %></td>
+				<td><a href="/games/<%= game.id %>"><%= game.title %></a>-
+						<%= game.court.sport.name %></td>
+				<td><a href="/parks/<%= game.court.park.id %>"><%= game.court.park.name.capitalize %></a>-
+						<%= game.skill_level %></td>
 				<td><%= game.first_name %></td>
-				<td><%= game.players_committed %></td>
 				<td><%= game.players_looking_for %></td>
-				<td><button type="button" class="btn btn-default"><a href="<%= @link %>/games/<%= game.id %>">Commit To Game</a></button></td>
 		</tr>
 				<% @count = @count + 1 %>
 				<% end %>
@@ -66,3 +60,24 @@
 
     </script>
 <div id="map-canvas"></div>
+		<% games = [] %>
+				<% games = @games.sample(4) %>
+				<% @count = 1 %>
+				<% games.each do |game| %>
+	<div class="panel-group" id="accordion">
+          <div class="panel panel-default">
+             <div class="panel-heading">
+               <a data-toggle="collapse" data-parent="#accordion" href="/games/<%= game.id %>">
+               	 <%= game.title %>
+               </a>
+             </div>
+             <div id="collapseOne" class="panel-collapse collapse in">
+
+               <div class="panel-body">
+                 Hmmmmmm
+               </div>
+          	</div>
+					</div>
+	</div>
+					<% end %>
+

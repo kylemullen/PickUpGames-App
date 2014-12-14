@@ -21,14 +21,18 @@ class GamesController < ApplicationController
 	end
 
 	def create
+		@sports = Sport.all
 	  @game = current_user.games.create(game_params)
 	  redirect_to @game
-	  @sports = Sport.all
+	  
 	end
 
 	def new
 		@court_id = params[:court_id]
 	  @game = Game.new
+	  	if @game.save
+	  		redirect_to @game
+	  	end
 	  @sports = Sport.all
 	end
 

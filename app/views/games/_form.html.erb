@@ -1,24 +1,49 @@
+
 <%= form_for @game do |f| %>
-	<div>
-		<ul>
-			<li><%= f.label :title %>
-			<%= f.text_field :title %></li>
 
-			<li><%= f.label :players_committed %>
-			<%= f.select :players_committed, options_for_select(1..20) %></li>
+		<div class="panel panel-danger">
+			<div class="panel-heading">
+				<h3 class="panel-title">Title of Game:</h3>
+			</div>
+				<div class="panel-body">
+						<%= f.text_field :title %>
+				</div>
+		</div>
 
-			<li><%= f.label :players_looking_for %>
-			<%= f.select :players_looking_for, options_for_select(1..20) %></li>
+		<div class="panel panel-danger">
+			<div class="panel-heading">
+		  	<h3 class="panel-title">Players You Have</h3>
+			</div>
+				<div class="panel-body">
+				 	<%= f.select :players_committed, options_for_select(1..20) %>
+				</div>
+		</div>	
 
-			<li><%= f.label :skill_level %>
-				<%= f.select :skill_level, options_for_select(["Beginner", "Recreational", "Competitive"]) %></li>
+		<div class="panel panel-danger">
+			<div class="panel-heading">
+		  	<h3 class="panel-title">Players You Have</h3>
+			</div>
+				<div class="panel-body">
+				 	<%= f.select :players_looking_for, options_for_select(1..20) %>
+			</div>
+		</div>	
 
-		</ul>
-				<%= f.hidden_field :court_id, value: @court_id %>
-	</div>
+		<div class="panel panel-danger">
+			<div class="panel-heading">
+		  	<h3 class="panel-title">Players You Have</h3>
+			</div>
+				<div class="panel-body">
+				 	<%= f.select :skill_level, options_for_select(["Beginner", "Recreational", "Competitive"]) %>
+			</div>
+		</div>	
+
+		<%= f.hidden_field :court_id, value: @court_id %>
 
 		<div>
 			<%= f.submit %>
 		</div>
-		
+
 <% end %>
+
+
+

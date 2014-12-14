@@ -1,7 +1,10 @@
 <div ng-app="app">
 	<div ng-controller="gamesCtrl" ng-init="gameId = <%= @game.id %>; userId = <%= current_user.id %>">
+		<div class="row">
+			<div class="col-sm-6">
 			<h1> The Game: <%= @game.title %> -- <%= @game.sport_name %> </h1>
 
+				
 				<ul>
 					  <h3>Created By: <%= @game.first_name %> <%= @game.last_name%>, email: <%= @game.email %></h3>
 					  <li><%= @game.sport_name %> Court at <a href="/parks/<%= @game.court.park.id %>"><%= @game.park_name.capitalize %></a></li>
@@ -26,9 +29,17 @@
 				<% elsif current_user %>
 				
 					 <h1> Sign up for this Game</h1>
-					<input ng-model="playersBringing">
-					<button ng-click="addGamedPlayer(userId, gameId, playersBringing)">Sign Up For This Game</button>
+					 	<h4>How many are you bringing? (Including yourself)</h4>
+						<input ng-model="playersBringing">
+							</br>
+						<button ng-click="addGamedPlayer(userId, gameId, playersBringing)">Sign Up For This Game</button>
 
 				<% end %>
+			</div>
+			<div class="col-sm-6">
+				<h3>Other Users Signed Up </h3>
+
+			</div>
+		</div>
 	</div>
 </div>

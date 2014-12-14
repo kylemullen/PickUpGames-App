@@ -4,6 +4,7 @@ gem 'devise'
 # gem 'bootstrap-sass'
 gem 'unirest'
 
+gem 'dotenv-rails'
 
 gem 'quiet_assets'
 gem 'simple_form'

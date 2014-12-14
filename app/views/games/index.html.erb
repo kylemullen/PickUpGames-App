@@ -60,24 +60,52 @@
 
     </script>
 <div id="map-canvas"></div>
-		<% games = [] %>
+			<% games = [] %>
 				<% games = @games.sample(4) %>
 				<% @count = 1 %>
-				<% games.each do |game| %>
 	<div class="panel-group" id="accordion">
-          <div class="panel panel-default">
-             <div class="panel-heading">
-               <a data-toggle="collapse" data-parent="#accordion" href="/games/<%= game.id %>">
-               	 <%= game.title %>
-               </a>
-             </div>
-             <div id="collapseOne" class="panel-collapse collapse in">
-
-               <div class="panel-body">
-                 Hmmmmmm
-               </div>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+           <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+            <%= games[0].title %></a>
           	</div>
-					</div>
-	</div>
-					<% end %>
+            <div id="collapseOne" class="panel-collapse collapse in">
+              <div class="panel-body">
+              <ul>
+               <li> <%= games[0].court.sport.name =%>--<%= games[0].skill_level =%> </li>
+               <li> <%= games[0].first_name %></li>
+               <li><a href="/games/<%= games[0].id %>"></a></li>
+              </div>
+          </div>
+				</div>
+				<div class="panel panel-default">
+          <div class="panel-heading">
+           <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+            <%= games[1].title %></a>
+          	</div>
+            <div id="collapseTwo" class="panel-collapse collapse in">
+              <div class="panel-body">
+              <ul>
+               <li> <%= games[1].court.sport.name =%>--<%= games[1].skill_level =%> </li>
+               <li> <%= games[1].first_name %></li>
+               <li><a href="/games/<%= games[1].id %>"></a></li>
+              </div>
+          </div>
+				</div>
+				<div class="panel panel-default">
+          <div class="panel-heading">
+           <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+            <%= games[2].title %></a>
+          	</div>
+            <div id="collapseThree" class="panel-collapse collapse in">
+              <div class="panel-body">
+              <ul>
+               <li> <%= games[2].court.sport.name =%>--<%= games[2].skill_level =%> </li>
+               <li> <%= games[2].first_name %></li>
+               <li><a href="/games/<%= games[2].id %>"></a></li>
+              </div>
+          </div>
+				</div>
+</div>
+		
 

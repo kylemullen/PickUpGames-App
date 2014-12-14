@@ -1,0 +1,52 @@
+<h1>Create Your Game</h1>
+	<div ng-app="app">
+		<div ng-controller="gamesCtrl" ng-init="gameCourtId = <%= @court_id %>; userId = <%= current_user.id %>">
+			<form name="myForm">
+				<div class="new-game">
+					
+		   		 	
+						<div class="panel panel-danger">
+							  <div class="panel-heading">
+							    <h3 class="panel-title">Title of Game:</h3>
+							  </div>
+							  <div class="panel-body">
+							    <input ng-model="gameTitle">
+							  </div>
+						</div>
+						    	
+						<div class="panel panel-danger">
+							  <div class="panel-heading">
+							  	<h3 class="panel-title">Players You Have</h3>
+							  </div>
+							  <div class="panel-body">
+				    			<input ng-model="gamePlayersCommitted">
+				    		</div>
+				    </div>
+
+				    <div class="panel panel-danger">
+							  <div class="panel-heading">
+							  	<h3 class="panel-title">Players You Need</h3>
+							  </div>
+							  <div class="panel-body">
+				    			<input ng-model="gamePlayersLookingFor">
+				    		</div>
+				    </div>
+
+				    <div class="panel panel-danger">
+							  <div class="panel-heading">
+							  	<h3 class="panel-title">Skill Level</h3>
+							  </div>
+							<div class="panel-body">
+					    	<input type="radio" ng-model="gameSkill" value="Beginner">Beginner</input>
+					    	<input type="radio" ng-model="gameSkill" value="Recreational">Recreational</input>
+					    	<input type="radio" ng-model="gameSkill" value="Competitive">Competitive</input>
+					    </div>
+				    	
+				    </div>
+				    <button type="button" class="btn btn-danger" ng-click="addGame(gameTitle, gamePlayersCommitted, gamePlayersLookingFor, gameSkill, gameCourtId, userId)">Add game</button>
+		   
+		  </div>
+		</div>
+	</div>
+
+

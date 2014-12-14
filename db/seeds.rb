@@ -6,6 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+
 parks = Unirest.get("http://data.cityofchicago.org/resource/wwy2-k7b3.json").body
 
 parks.each do |park|

@@ -3,21 +3,16 @@ class GamesController < ApplicationController
 	respond_to :xml, :json, :html
 
 	def show
-		@gamed_players = Game.find_by(:id => params[:id]).gamed_players
-		# @gamed_players = GamedPlayer.find_by(:game_id => params[:id])
-		# @gamed_players = if Game.find_by(:user_id => current_user.id, :status => "open")
-		# 	@game = Game.find_by(:user_id => current_user.id, :status => "open")
-		# else
-		# 	@game = Game.create(:status => "open", :user_id => current_user.id)
-		# end
 
-		# GamedPlayer.create(carted_product_params.merge(:Game_id => @Game.id))
-		# flash[:success] = "Added to cart."
-		# redirect_to "/"
+		@gamed_players = Game.find_by(:id => params[:id]).gamed_players
+		# 	@game_players = Game.find_by(:id => params[:id]).gamed_players
+		# else @gamed_players = GamedPlayer.new
+		# end
 		@parks = Park.all
 		@sports = Sport.all
 		if params[:id] == "mygame"
 			@game = Game.find_by(:user_id => current_user.id, :status => "open")
+			# @gamed_players = Game.find_by(:id => params[:id]).gamed_players
 		else
 			@game = Game.find_by(:id => params[:id])
 		end

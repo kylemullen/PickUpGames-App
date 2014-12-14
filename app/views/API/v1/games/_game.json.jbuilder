@@ -6,3 +6,9 @@ json.players_looking_for game.players_looking_for
 json.skill_level game.skill_level
 json.status game.status
 json.user_id game.user_id
+json.gamed_players game.gamed_players.each do |gamed_player|
+	json.email gamed_player.user.email
+	json.first_name gamed_player.user.first_name
+	json.last_name gamed_player.user.last_name
+	json.players_bringing gamed_player.players_bringing
+end

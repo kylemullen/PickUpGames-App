@@ -7,6 +7,17 @@
 			$scope.games = response.data;
 		});
 
+    $scope.setupGame = function(gameId, userId) {
+      $scope.gameId = gameId;
+      $scope.userId = userId;
+
+      $http.get("/api/v1/games/" + gameId + ".json").then(function (response)  {
+        $scope.game = response.data;
+      });
+    };
+
+    
+
     $http.get("/api/v1/gamed_players.json").then(function (response)  {
       $scope.gamed_players = response.data;
     });
@@ -31,18 +42,46 @@
            
     };
 
+
+
     $scope.addGamedPlayer = function (userId, gameId, playersBringing) {
       var newGamedPlayer = { user_id: userId, game_id: gameId, players_bringing: playersBringing};
       $http.post('/api/v1/gamed_players.json', {gamed_player: newGamedPlayer}).then(function(response)
           {
-          $scope.gamed_players.push(newGamedPlayer);
-          $scope.playersBringing = "";
+            if(!$scope.playerIsSignedOn(userId)) {
+              $scope.gamed_players.push(newGamedPlayer);
+              $scope.playersBringing = "";
+            } else {
+
+            }
           
           }, function (error) {
             $scope.errors = error.data.errors;
           });
 
     };
+
+    $scope.playerIsSignedOn = function(userId) {
+      var signedOn = false
+      for(var i = 0; i < $scope.gamed_players.length; i++) {
+        if($scope.gamed_players[i].user_id == userId) {
+          signedOn = true;
+        }
+      }
+      return signedOn;
+
+
+    }
+
+
+
+    // $scope.gamedPlayersInGame = function(gameId) { 
+    //   $http.get("/api/v1/games/#{gameId}.json").then(function (response) {
+    //   $scope.gamedPlayersInGame = response.data;
+    //   }
+    //   }
+
+    
     
     $scope.changeOrder = function(attribute) {
       $scope.orderAttribute = attribute;

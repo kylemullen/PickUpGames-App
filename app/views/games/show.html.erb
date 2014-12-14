@@ -1,53 +1,56 @@
 <div ng-app="app">
-	<div ng-controller="gamesCtrl" ng-init="gameId = <%= @game.id %>; userId = <%= current_user.id %>">
+	<div ng-controller="gamesCtrl" ng-init="setupGame(<%= @game.id %>, <%= current_user.id %>)">
 		<div class="row">
-			<div class="col-sm-6">
+			<div class="col-sm-8">
 			<h1> The Game: <%= @game.title %> -- <%= @game.sport_name %> </h1>
-
-				
-				<ul>
-					  <h3>Created By: <%= @game.first_name %> <%= @game.last_name%>, email: <%= @game.email %></h3>
-					  <li><%= @game.sport_name %> Court at <a href="/parks/<%= @game.court.park.id %>"><%= @game.park_name.capitalize %></a></li>
-					  <li>  Skill-Level: <%= @game.skill_level %> </li>
-
-						<% if @game.status == "open" %>
-							<li>Looking for More People!</li>
-						  <li>Players Committed: <%= @game.players_committed %></li>
-						  <li>Still Looking For: <%= @game.players_looking_for %> more players</li>
-
-						<% elsif @game.status == "closed" %>
-							<li>  Game is all full, sorry</li>
-						<% end %>
-
-				</ul>
+				<table class="table table-striped">
+					<tr>
+						<th>Created By</th>
+						<th>Park</th>
+						<th>Skill Level</th>
+						<th>Players Committed</th>
+						<th>Still Looking For</th>
+					</tr>
+					<tr>
+						<td><%= @game.first_name %> <%= @game.last_name%>, email: <%= @game.email %></td>
+						<td><%= @game.sport_name %> Court at <a href="/parks/<%= @game.court.park.id %>"><%= @game.park_name.capitalize %></td>
+						<td><%= @game.skill_level %></td>
+						<td><%= @game.players_committed %></td>
+						<td><%= @game.players_looking_for %></td>
+					</tr>
+				</table>
 
 				<% if @game.user_id == current_user.id %>
 					<h4> This is Your Game </h4>
 						<button type="button" class="btn btn-danger"><a data-method="delete" href="/games/<%= @game.id %>" rel="nofollow">Remove Game</a></button>
 						<button type="button" class="btn btn-info"><a data-method="get" href="/games/<%= @game.id %>/edit" rel="nofollow">Modify Game</a></button>
-				<% end %>
+				<% elsif %>
+						<h1> Sign up for this Game</h1>
+							<h4>How many are you bringing? (Including yourself)</h4>
 
-				<% @gamed_players.each do |player| %>
-					<% if  current_user.id == player.id %>
-						<h3> You're already Signed Up for this game</h3>
-				<% break %>
-						
-				<% else %>
-					<h1> Sign up for this Game</h1>
-					 	<h4>How many are you bringing? (Including yourself)</h4>
-						<input ng-model="playersBringing">
+							<input ng-model="playersBringing">
 							</br>
-						<button ng-click="addGamedPlayer(userId, gameId, playersBringing)">Sign Up For This Game</button>
-					<% break %>
-					<% end %>
-				<% end %>
+							<button ng-click="addGamedPlayer(userId, gameId, playersBringing)">Sign Up For This Game</button>
+				<% end %> 
+
 		
+			
 			</div>
-			<div class="col-sm-6">
+			
+
+			<div class="col-sm-4">
+
+
+				<div ng-repeat="player in game.gamed_players">
+					{{ 1 + 1 }}
+					<p> {{ player.first_name }} <p>
+				</div>
+
 				<h3>Other Users Signed Up </h3>
 					<% @gamed_players.each do |player| %>
-						<h5><%= player.user.email %></h5>
-				<% end %>
+						<h5><%= player.user.email %> <%= player.user.first_name %> <%= player.user.last_name %></h5>
+					<% end %>
+
 
 			</div>
 		</div>

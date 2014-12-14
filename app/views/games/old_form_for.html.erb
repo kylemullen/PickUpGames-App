@@ -22,3 +22,17 @@
 		</div>
 		
 <% end %>
+
+<%= form_for @gamed_players do |f| %>
+				  <div>
+				    <%= f.hidden_field :game_id, value: @game_id %>
+				    <%= f.hidden_field :user_id, value: current_user.id %>
+
+				    </br>
+				    <%= f.select :players_bringing, options_for_select(1..20) %>
+				  </div> 
+				  
+				  <div>
+				  	<%= submit_tag 'Join This Game' %>
+				  </div>
+				<% end %>

@@ -22,22 +22,32 @@
 				</ul>
 
 				<% if @game.user_id == current_user.id %>
-					<button type="button" class="btn btn-danger"><a data-method="delete" href="/games/<%= @game.id %>" rel="nofollow">Remove Game</a></button>
-					<button type="button" class="btn btn-info"><a data-method="get" href="/games/<%= @game.id %>/edit" rel="nofollow">Modify Game</a></button>
+					<h4> This is Your Game </h4>
+						<button type="button" class="btn btn-danger"><a data-method="delete" href="/games/<%= @game.id %>" rel="nofollow">Remove Game</a></button>
+						<button type="button" class="btn btn-info"><a data-method="get" href="/games/<%= @game.id %>/edit" rel="nofollow">Modify Game</a></button>
+				<% end %>
 
-
-				<% elsif current_user %>
-				
-					 <h1> Sign up for this Game</h1>
+				<% @gamed_players.each do |player| %>
+					<% if  current_user.id == player.id %>
+						<h3> You're already Signed Up for this game</h3>
+				<% break %>
+						
+				<% else %>
+					<h1> Sign up for this Game</h1>
 					 	<h4>How many are you bringing? (Including yourself)</h4>
 						<input ng-model="playersBringing">
 							</br>
 						<button ng-click="addGamedPlayer(userId, gameId, playersBringing)">Sign Up For This Game</button>
-
+					<% break %>
+					<% end %>
 				<% end %>
+		
 			</div>
 			<div class="col-sm-6">
 				<h3>Other Users Signed Up </h3>
+					<% @gamed_players.each do |player| %>
+						<h5><%= player.user.email %></h5>
+				<% end %>
 
 			</div>
 		</div>

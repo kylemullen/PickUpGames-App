@@ -36,6 +36,7 @@
       $http.post('/api/v1/gamed_players.json', {gamed_player: newGamedPlayer}).then(function(response)
           {
           $scope.gamed_players.push(newGamedPlayer);
+          $scope.playersBringing = "";
           
           }, function (error) {
             $scope.errors = error.data.errors;

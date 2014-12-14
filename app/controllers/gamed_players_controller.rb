@@ -4,12 +4,7 @@ class GamedPlayersController < ApplicationController
 	end
 
 	def create
-		if Game.find_by(:user_id => current_user.id, :status => "open")
-			
-
-		elsif 
-
-
+		
 	end
 
 	def show
@@ -22,6 +17,11 @@ class GamedPlayersController < ApplicationController
 	end
 
 	def edit
+	end
+
+	private
+	def game_params
+		return params.require(:gamed_player).permit(:user_id, :game_id, :players_bringing)
 	end
 
 end

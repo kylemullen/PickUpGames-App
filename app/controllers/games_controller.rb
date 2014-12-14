@@ -3,6 +3,17 @@ class GamesController < ApplicationController
 	respond_to :xml, :json, :html
 
 	def show
+		@gamed_players = Game.find_by(:id => params[:id]).gamed_players
+		# @gamed_players = GamedPlayer.find_by(:game_id => params[:id])
+		# @gamed_players = if Game.find_by(:user_id => current_user.id, :status => "open")
+		# 	@game = Game.find_by(:user_id => current_user.id, :status => "open")
+		# else
+		# 	@game = Game.create(:status => "open", :user_id => current_user.id)
+		# end
+
+		# GamedPlayer.create(carted_product_params.merge(:Game_id => @Game.id))
+		# flash[:success] = "Added to cart."
+		# redirect_to "/"
 		@parks = Park.all
 		@sports = Sport.all
 		if params[:id] == "mygame"
@@ -11,6 +22,7 @@ class GamesController < ApplicationController
 			@game = Game.find_by(:id => params[:id])
 		end
 		@parks = Park.joins(:sports).where("sports.name = ?", params[:sport]) if params[:sport]
+
 	end
 
 	def index
@@ -23,7 +35,7 @@ class GamesController < ApplicationController
 	def create
 		@sports = Sport.all
 	  @game = current_user.games.create(game_params)
-	  redirect_to @game
+	  	redirect_to @game
 	  
 	end
 

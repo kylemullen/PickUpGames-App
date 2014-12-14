@@ -1,6 +1,7 @@
 class Game < ActiveRecord::Base
 	belongs_to :user
 	belongs_to :court
+	has_many :gamed_players
 
 	validates_presence_of :title
   validates_presence_of :players_committed

@@ -47,7 +47,8 @@
             </li>
             <li class="hidden-sm">
               <% if current_user %>
-              <a href="/courts">Feeling Lucky?</a>
+                <% sample_game = @games.sample %>
+                  <a href="/games/<%= sample_game.id%>">Feeling Lucky?</a>
               <% end %>
             </li>
             <li class="hidden-sm">

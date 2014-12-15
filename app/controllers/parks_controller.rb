@@ -9,11 +9,14 @@ class ParksController < ApplicationController
 	end
 
 	def index
+		@games = Game.all
 		@parks = Park.all
 		@sports = Sport.all
+		@parks = Park.joins(:sports).where("sports.name = ?", params[:sport]) if params[:sport]
 	end
 
 	def show
+		@games = Game.all
 		@park = Park.find_by(:id => params[:id])
 		@sports = Sport.all
 	end

@@ -3,6 +3,7 @@ class GamesController < ApplicationController
 	respond_to :xml, :json, :html
 
 	def show
+		@games = Game.all
 
 		@gamed_players = Game.find_by(:id => params[:id]).gamed_players
 		# 	@game_players = Game.find_by(:id => params[:id]).gamed_players
@@ -28,6 +29,7 @@ class GamesController < ApplicationController
 	end
 
 	def create
+		@games = Game.all
 		@sports = Sport.all
 	  @game = current_user.games.create(game_params)
 	  	redirect_to @game
@@ -35,6 +37,7 @@ class GamesController < ApplicationController
 	end
 
 	def new
+		@games = Game.all
 		@court_id = params[:court_id]
 	  @game = Game.new
 	  	if @game.save
@@ -44,11 +47,13 @@ class GamesController < ApplicationController
 	end
 
 	def edit
+		@games = Game.all
 		@game = Game.find_by(:id => params[:id])
 		@sports = Sport.all
 	end
 
 	def update
+		@games = Game.all
 		@game = Game.find_by(:id => params[:id])
 		@game.update(params[:game])
 		flash[:info] = "Game Succesfully Modified."
@@ -57,6 +62,7 @@ class GamesController < ApplicationController
 	end
 
 	def destroy
+		@games = Game.all
 		@game = Game.find_by(:id => params[:id])
 		@game.destroy
 		flash[:danger] = "Game Removed."
@@ -69,6 +75,7 @@ class GamesController < ApplicationController
 	end
 
 	def home
+		@games = Game.all
 		@sports = Sport.all
 	end
 

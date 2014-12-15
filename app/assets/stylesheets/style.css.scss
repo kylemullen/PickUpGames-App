@@ -1,10 +1,15 @@
 #map-canvas {
 	height: 575px;
-	width: 700px;
+	width: 575px;
 	border-width:5px;	
   border-style:outset;
   border-color: #ed3e49;
+  float: right;
 
+}
+
+.navbar {
+	background:#EBEBEB;
 }
 
 .navbar-btn {
@@ -35,4 +40,5 @@ background: #ed3e49;
 	
 	width: 300px;
 }
+
 

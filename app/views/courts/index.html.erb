@@ -1,0 +1,80 @@
+
+<div class="row">
+	<div class="col-sm-4">
+		<table class="table table-bordered">
+				<tr>
+					<th></th>
+					<th>Game Title/Sport</th>
+					<th>Park/Skill Level</th>
+					<th>Creator</th>
+					<th>Players Looking For</th>
+				</tr>
+
+				<% games = [] %>
+				<% games = @games.sample(4) %>
+				<% @count = 1 %>
+				<% games.each do |game| %>
+				<tr>
+					<td><%= @count %></td>
+					<td><a href="/games/<%= game.id %>"><%= game.title %></a>-
+					<%= game.court.sport.name %></td>
+					<td><a href="/parks/<%= game.court.park.id %>"><%= game.court.park.name.capitalize %></a>-
+					<%= game.skill_level %></td>
+					<td><%= game.first_name %></td>
+					<td><%= game.players_looking_for %></td>
+				</tr>
+				<% @count = @count + 1 %>
+				<% end %>
+		</table>
+</div>
+
+
+
+<div class="col-sm-8">
+	<div id="map-canvas" class="map-parks"></div>
+	<%if @sports %>
+ <% @sports.each do |sport| %>
+  <li><a href="/courts/?sport=<%= sport.name %>"><%= sport.name %></a></li>
+   <% end %>
+<% end %>
+		
+</div>
+
+
+<script type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCXgnWnrHcxQ0i1E9k2cWmfC_mRzwru97A">
+  	</script>
+    <script type="text/javascript">
+      function initialize() {
+        var mapOptions = {
+          center: { lat: 41.87811, lng: -87.62980},
+          zoom: 11
+        };
+        var map = new google.maps.Map(document.getElementById('map-canvas'),
+            mapOptions);
+
+        var markers = [];
+        <% @parks.each_with_index do |park, index| %>
+
+        	<% if park.lat && park.courts.any? %>
+		      	markers[<%= index %>] = new google.maps.Marker({
+				      position: new google.maps.LatLng(<%= park.lat %>, <%= park.lng %>),
+				      map: map,
+				      title: "<%= park.name %>"
+		  			});
+
+		  			google.maps.event.addListener(markers[<%= index %>], 'click', function() {
+    					new google.maps.InfoWindow({
+      					content: "<a href='/parks/<%= park.id %>'><%= park.name %></a>"
+  							}).open(map,markers[<%= index %>]);
+ 						 });
+		  			<% end %>
+
+      <% end %>
+      }
+      google.maps.event.addDomListener(window, 'load', initialize);
+
+    </script>
+  </div>
+  
+ 

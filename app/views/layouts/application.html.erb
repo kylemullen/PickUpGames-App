@@ -16,6 +16,7 @@
 </head>
 <body>
 
+
 	<!-- Navigation -->
     <div class="navbar navbar-default navbar-fixed-top" role="navigation">
       <div class="container">
@@ -40,18 +41,14 @@
               <a href="/">Home</a>
             </li>
             <li class="hidden-sm">
-              <a href="/games">Games</a>
+              <% if current_user %>
+              <a href="/games">All Open Games</a>
+              <% end %>
             </li>
-            <li class="dropdown active">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Map<b class="caret"></b></a>
-              <ul class="dropdown-menu">
-              <%if @sports %>
-                <% @sports.each do |sport| %>
-                    <li><a href="/games/?sport=<%= sport.name %>"><%= sport.name %></a></li>
-                    <% end %>
-                  <% end %>
-                </li>
-              </ul>
+            <li class="hidden-sm">
+              <% if current_user %>
+              <a href="/courts">Feeling Lucky?</a>
+              <% end %>
             </li>
             <li class="hidden-sm">
               <% if current_user %>
@@ -59,19 +56,15 @@
               <% end %>
             </li>
             <li class="hidden-sm">
-              <% if current_user && Game.find_by(:user_id => current_user.id, :status => "open") %>
-                <a href="/games/mygame">My Current Game</a>
-              <% end %>
-            </li>
-            <li class="hidden-sm">
               <% if current_user %>
                 <a href="">My Profile</a>
+              <% end %>
             </li>
             <!-- Navbar Search -->
             <li class="hidden-xs" id="navbar-search">
               <a href="#">
                 <i class="fa fa-search"></i>
-              <% end %>
+              
             </a>
               <div class="hidden" id="navbar-search-box">
                 <div class="input-group">
@@ -98,7 +91,6 @@
 
 
 
-
 <div class="wrapper">
 	<div class="container">
     <% flash.each do |name, message| %>
@@ -109,6 +101,8 @@
 <% end %>
 		<%= yield %>
 	</div>
+  <div class="body">
+</div>
 </div>
 </body>
 </html>

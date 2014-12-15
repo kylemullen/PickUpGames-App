@@ -8,6 +8,10 @@ class CourtsController < ApplicationController
 	end
 
 	def index
+		@sports = Sport.all
+		@parks = Park.all
+		@games = Game.all
+		@parks = Park.joins(:sports).where("sports.name = ?", params[:sport]) if params[:sport]
 	end
 
 	def show

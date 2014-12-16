@@ -15,6 +15,7 @@ class CourtsController < ApplicationController
 	end
 
 	def show
+		
 	end
 
 	def destroy

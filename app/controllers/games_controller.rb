@@ -33,17 +33,20 @@ class GamesController < ApplicationController
 		@sports = Sport.all
 	  @game = current_user.games.create(game_params)
 	  	redirect_to @game
+
 	  
 	end
 
 	def new
 		@games = Game.all
 		@court_id = params[:court_id]
+		
 	  @game = Game.new
 	  	if @game.save
 	  		redirect_to @game
 	  	end
 	  @sports = Sport.all
+	  @park_id = Park.find_by(:park_number => params[:court_id])
 	end
 
 	def edit
@@ -68,7 +71,6 @@ class GamesController < ApplicationController
 		flash[:danger] = "Game Removed."
 		redirect_to '/games'
 		@sports = Sport.all
-
 	end
 
 	def map

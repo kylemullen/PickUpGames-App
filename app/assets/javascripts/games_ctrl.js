@@ -10,6 +10,7 @@
     $scope.setupGame = function(gameId, userId) {
       $scope.gameId = gameId;
       $scope.userId = userId;
+      $scope.game = {gamed_players: []};
 
       $http.get("/api/v1/games/" + gameId + ".json").then(function (response)  {
         $scope.game = response.data;
@@ -25,6 +26,8 @@
     $http.get("/api/v1/parks.json").then(function (response)  {
       $scope.parks = response.data;
     });
+
+
 
 		$scope.addGame = function(gameTitle, gamePlayersCommitted, gamePlayersLookingFor, gameSkill, gameCourtId, userId) {
       var newGame = { title: gameTitle, court_id: gameCourtId, players_committed: gamePlayersCommitted, players_looking_for: gamePlayersLookingFor, skill_level: gameSkill, user_id: userId};
@@ -48,7 +51,7 @@
       var newGamedPlayer = { user_id: userId, game_id: gameId, players_bringing: playersBringing};
       $http.post('/api/v1/gamed_players.json', {gamed_player: newGamedPlayer}).then(function(response)
           {
-            if(!$scope.playerIsSignedOn(userId)) {
+            if($scope.playerIsSignedOn(userId)) {
               $scope.game.gamed_players.push(newGamedPlayer);
               $scope.playersBringing = "";
             } else {

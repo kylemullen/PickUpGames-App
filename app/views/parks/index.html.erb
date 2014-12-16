@@ -18,7 +18,7 @@
 			<div class="col-sm-2">
 					<%if @sports %>
  					<% @sports.each do |sport| %>
-  					<p><a class="btn btn-sm btn-theme-primary" href="/parks/?sport=<%= sport.name %>"><%= sport.name %></a></p>
+  					<p class="my-float"><a class="btn btn-sm btn-theme-primary" href="/parks/?sport=<%= sport.name %>"><%= sport.name %></a></p>
    				<% end %>
 					<% end %>
 			</div>

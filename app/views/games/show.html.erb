@@ -24,14 +24,27 @@
 					<h4> This is Your Game </h4>
 						<button type="button" class="btn btn-danger"><a data-method="delete" href="/games/<%= @game.id %>" rel="nofollow">Remove Game</a></button>
 						<button type="button" class="btn btn-info"><a data-method="get" href="/games/<%= @game.id %>/edit" rel="nofollow">Modify Game</a></button>
-				<% elsif %>
-						<h1> Sign up for this Game</h1>
-							<h4>How many are you bringing? (Including yourself)</h4>
+					
+					<% else %>
+						
+						<div ng-if="!playerIsSignedOn(userId)">
+							<h1> Sign up for this Game</h1>
+								<h4>How many are you bringing? (Including yourself)</h4>
+								<input  ng-model="playersBringing">
+								</br>
+								<a class="btn btn-lg btn-theme-primary" ng-click="addGamedPlayer(userId, gameId, playersBringing)">Sign Up For This Game</a>
+							</div>
+					<% end %> 
+				
+			
+			<% @gamed_players.each do |player| %>
+				<% if player.user_id == current_user.id %>
+					<p> You Signed Up For This Game <p>
+					<% break %>
+				<% end %>
+				
+			<% end %>
 
-							<input ng-model="playersBringing">
-							</br>
-							<button ng-click="addGamedPlayer(userId, gameId, playersBringing)">Sign Up For This Game</button>
-				<% end %> 
 
 		
 			
@@ -42,7 +55,6 @@
 
 
 				<div ng-repeat="player in game.gamed_players">
-					{{ 1 + 1 }}
 					<p> {{ player.first_name }} <p>
 				</div>
 

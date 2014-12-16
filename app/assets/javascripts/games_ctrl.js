@@ -18,9 +18,9 @@
 
     
 
-    $http.get("/api/v1/gamed_players.json").then(function (response)  {
-      $scope.gamed_players = response.data;
-    });
+    // $http.get("/api/v1/gamed_players.json").then(function (response)  {
+    //   $scope.gamed_players = response.data;
+    // });
 
     $http.get("/api/v1/parks.json").then(function (response)  {
       $scope.parks = response.data;
@@ -49,7 +49,7 @@
       $http.post('/api/v1/gamed_players.json', {gamed_player: newGamedPlayer}).then(function(response)
           {
             if(!$scope.playerIsSignedOn(userId)) {
-              $scope.gamed_players.push(newGamedPlayer);
+              $scope.game.gamed_players.push(newGamedPlayer);
               $scope.playersBringing = "";
             } else {
 
@@ -62,9 +62,12 @@
     };
 
     $scope.playerIsSignedOn = function(userId) {
+      console.log(userId);
+
       var signedOn = false
-      for(var i = 0; i < $scope.gamed_players.length; i++) {
-        if($scope.gamed_players[i].user_id == userId) {
+      for(var i = 0; i < $scope.game.gamed_players.length; i++) {
+          console.log($scope.game.gamed_players[i].user_id)
+        if($scope.game.gamed_players[i].user_id == userId) {
           signedOn = true;
         }
       }

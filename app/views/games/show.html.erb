@@ -24,25 +24,37 @@
 					<h4> This is Your Game </h4>
 						<button type="button" class="btn btn-danger"><a data-method="delete" href="/games/<%= @game.id %>" rel="nofollow">Remove Game</a></button>
 						<button type="button" class="btn btn-info"><a data-method="get" href="/games/<%= @game.id %>/edit" rel="nofollow">Modify Game</a></button>
-					
-					<% else %>
-						
-						<div ng-if="!playerIsSignedOn(userId)">
-							<h1> Sign up for this Game</h1>
-								<h4>How many are you bringing? (Including yourself)</h4>
-								<input  ng-model="playersBringing">
-								</br>
-								<a class="btn btn-lg btn-theme-primary" ng-click="addGamedPlayer(userId, gameId, playersBringing)">Sign Up For This Game</a>
+			
+				<% end %> 
+
+
+				
+				 		<%= form_for @gamed_player do |f| %>
+				 			<div class="col-sm-4">
+								<div class="panel panel-danger">
+									<div class="panel-heading">
+										<h3 class="panel-title">How Many are you brining(including yourself):</h3>
+									</div>
+								<div class="panel-body">
+									<%= f.text_field :players_bringing %>
+								</div>
+								</div>
 							</div>
-					<% end %> 
+							<%= f.hidden_field :game_id, value: @game.id %>
+							<%= f.hidden_field :user_id, value: current_user.id %>
+						<div>
+							<%= f.submit "Sign Up" %>
+						</div>
+						<% end %>
 				
 			
 			<% @gamed_players.each do |player| %>
-				<% if player.user_id == current_user.id %>
+				<% if player.user.id == current_user.id %>
 					<p> You Signed Up For This Game <p>
 					<% break %>
+				<% elsif %>
+				<p> Not Signed Up.  I hope this works!<p>
 				<% end %>
-				
 			<% end %>
 
 
@@ -53,15 +65,11 @@
 
 			<div class="col-sm-4">
 
-
-				<div ng-repeat="player in game.gamed_players">
-					<p> {{ player.first_name }} <p>
-				</div>
-
 				<h3>Other Users Signed Up </h3>
 					<% @gamed_players.each do |player| %>
-						<h5><%= player.user.email %> <%= player.user.first_name %> <%= player.user.last_name %></h5>
+						<h5> <%= player.user.first_name %> <%= player.user.last_name %>  <%= player.user.email %> </h5>
 					<% end %>
+
 
 
 			</div>

@@ -4,26 +4,26 @@ class GamesController < ApplicationController
 
 	def show
 		@games = Game.all
+		
+		@sports = Sport.all
+		@parks = Park.joins(:sports).where("sports.name = ?", params[:sport]) if params[:sport]
+		@game = Game.find_by(:id => params[:id])
 
 		@gamed_players = Game.find_by(:id => params[:id]).gamed_players
-		# 	@game_players = Game.find_by(:id => params[:id]).gamed_players
-		# else @gamed_players = GamedPlayer.new
+		@gamed_player = GamedPlayer.new
+		# @gamed_players.each do |gamed_player|
+		# 	if gamed_player.user_id == current_user.id	
+		# 	@gamed_player = nil
+		# 		break 
+		# 	else 
+		# 	@gamed_player = GamedPlayer.new
+		# 	end
 		# end
-		@parks = Park.all
-		@sports = Sport.all
-		if params[:id] == "mygame"
-			@game = Game.find_by(:user_id => current_user.id, :status => "open")
-			# @gamed_players = Game.find_by(:id => params[:id]).gamed_players
-		else
-			@game = Game.find_by(:id => params[:id])
-		end
-		@parks = Park.joins(:sports).where("sports.name = ?", params[:sport]) if params[:sport]
-
+	
 	end
 
 	def index
 		@sports = Sport.all
-		@parks = Park.all
 		@games = Game.all
 		@parks = Park.joins(:sports).where("sports.name = ?", params[:sport]) if params[:sport]
 	end
@@ -47,6 +47,7 @@ class GamesController < ApplicationController
 	  	end
 	  @sports = Sport.all
 	  @park_id = Park.find_by(:park_number => params[:court_id])
+
 	end
 
 	def edit

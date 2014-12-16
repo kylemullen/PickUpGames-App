@@ -40,7 +40,7 @@
         };
         var map = new google.maps.Map(document.getElementById('map-canvas'),
             mapOptions);
-
+				var image = "http://google-maps-icons.googlecode.com/files/basketball.png";
         var markers = [];
         <% @parks.each_with_index do |park, index| %>
 
@@ -48,7 +48,8 @@
 		      	markers[<%= index %>] = new google.maps.Marker({
 				      position: new google.maps.LatLng(<%= park.lat %>, <%= park.lng %>),
 				      map: map,
-				      title: "<%= park.name %>"
+				      title: "<%= park.name %>",
+				      icon: image
 		  			});
 
 		  			google.maps.event.addListener(markers[<%= index %>], 'click', function() {

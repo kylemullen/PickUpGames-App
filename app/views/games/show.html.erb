@@ -27,8 +27,12 @@
 			
 				<% end %> 
 
-
 				
+					
+					  <p> You signed Up for this Game already<p>
+					   
+
+		
 				 		<%= form_for @gamed_player do |f| %>
 				 			<div class="col-sm-4">
 								<div class="panel panel-danger">
@@ -43,23 +47,12 @@
 							<%= f.hidden_field :game_id, value: @game.id %>
 							<%= f.hidden_field :user_id, value: current_user.id %>
 						<div>
-							<%= f.submit "Sign Up" %>
+							<%= f.submit "Sign Up", class: "btn btn-danger" %>
 						</div>
-						<% end %>
+
+					<% end %>
 				
-			
-			<% @gamed_players.each do |player| %>
-				<% if player.user.id == current_user.id %>
-					<p> You Signed Up For This Game <p>
-					<% break %>
-				<% elsif %>
-				<p> Not Signed Up.  I hope this works!<p>
-				<% end %>
-			<% end %>
 
-
-		
-			
 			</div>
 			
 

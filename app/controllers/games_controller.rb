@@ -26,6 +26,7 @@ class GamesController < ApplicationController
 		@sports = Sport.all
 		@games = Game.all
 		@parks = Park.joins(:sports).where("sports.name = ?", params[:sport]) if params[:sport]
+		var = params[:sport]
 	end
 
 	def create

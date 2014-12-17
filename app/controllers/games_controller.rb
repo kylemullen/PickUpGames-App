@@ -70,7 +70,7 @@ class GamesController < ApplicationController
 	private
 
 	def game_params
-		return params.require(:game).permit(:title, :players_committed, :players_looking_for, :court_id, :skill_level)
+		return params.require(:game).permit(:title, :players_committed, :players_looking_for, :court_id, :skill_level, :start_time, :end_time)
 	end
 
 end

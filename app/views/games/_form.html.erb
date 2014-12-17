@@ -22,26 +22,46 @@
 
 		<div class="panel panel-danger">
 			<div class="panel-heading">
-		  	<h3 class="panel-title">Players You Have</h3>
+		  	<h3 class="panel-title">Players You Need</h3>
 			</div>
 				<div class="panel-body">
 				 	<%= f.select :players_looking_for, options_for_select(1..20) %>
 			</div>
 		</div>	
-
+	</div>
+	<div class="col-sm-4">
 		<div class="panel panel-danger">
 			<div class="panel-heading">
-		  	<h3 class="panel-title">Players You Have</h3>
+		  	<h3 class="panel-title">Skill Level</h3>
 			</div>
 				<div class="panel-body">
 				 	<%= f.select :skill_level, options_for_select(["Beginner", "Recreational", "Competitive"]) %>
 			</div>
-		</div>	
+		</div>
+		<div class="panel panel-danger">
+			<div class="panel-heading">
+		  	<h3 class="panel-title">Start Time</h3>
+			</div>
+				<div class="panel-body">
+					<%= f.time_select :start_time, :ampm => true, :value => (Time.now + 2.hours) %>
+			</div>
+		</div>
+
+		<div class="panel panel-danger">
+			<div class="panel-heading">
+		  	<h3 class="panel-title">End Time</h3>
+			</div>
+				<div class="panel-body">
+					<%= f.time_select :start_time, :ampm => true, :value => (Time.now + 2.hours) %>
+			</div>
+		</div>
+	</div>
+
 
 		<%= f.hidden_field :court_id, value: @court_id %>
 
 		<div>
-			<%= f.submit, "Make the Game!" class: "btn btn-danger" %>
+			<%= f.submit "Make the Game!", class: "btn btn-danger" %>
 		</div>
 	</div>
 

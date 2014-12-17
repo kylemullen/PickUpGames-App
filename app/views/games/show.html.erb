@@ -19,7 +19,7 @@
 						<td><%= @game.players_committed %></td>
 						<td><%= @game.players_looking_for %></td>
 						<td><% if @game.start_time %>
-							<%= @game.start_time.strftime("%d/%m/%Y %H:%M")%></td>
+							<%= @game.start_time.strftime("%b %e, %l:%M %p")%></td>
 						<% end %></td>
 					</tr>
 				</table>

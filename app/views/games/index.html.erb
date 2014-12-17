@@ -23,7 +23,7 @@
 				<td><%= game.first_name %></td>
 				<td><%= game.players_looking_for %></td>
 			<% if game.start_time %>
-				<td><%= game.start_time.strftime("%d/%m/%Y %H:%M")%></td>
+				<td><%= game.start_time.strftime("%b %e, %l:%M %p")%></td>
 			<% end %>
 		</tr>
 				<% @count = @count + 1 %>

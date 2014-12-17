@@ -17,12 +17,6 @@ default: &default
   password:
   socket: /tmp/mysql.sock
 
-production: 
-  database: PickUpGames-app
-  adapter:  postgresql
-  coding: unicode
-  pool: 5
-
 development:
   <<: *default
   database: MatchGameSet-app_development
@@ -53,8 +47,8 @@ test:
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
-production:
-  <<: *default
-  database: PickUpGames-app_production
-  username: PickUpGames-app
-  password: <%= ENV['PICKUPGAMES-APP_DATABASE_PASSWORD'] %>
+production: 
+  database: PickUpGames-app
+  adapter:  postgresql
+  coding: unicode
+  pool: 5

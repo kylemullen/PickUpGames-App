@@ -10,6 +10,7 @@
 			<th>Park/Skill Level</th>
 			<th>Creator</th>
 			<th>Players Looking For</th>
+			<th>Game Start Time</th>
 		</tr>
 		<% @count = 1 %>
 		<% @games.each do |game| %>
@@ -21,6 +22,9 @@
 						<%= game.skill_level %></td>
 				<td><%= game.first_name %></td>
 				<td><%= game.players_looking_for %></td>
+			<% if game.start_time %>
+				<td><%= game.start_time.strftime("%d/%m/%Y %H:%M")%></td>
+			<% end %>
 		</tr>
 				<% @count = @count + 1 %>
 				<% end %>

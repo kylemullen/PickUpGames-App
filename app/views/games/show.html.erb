@@ -10,6 +10,7 @@
 						<th>Skill Level</th>
 						<th>Players Committed</th>
 						<th>Still Looking For</th>
+						<th>Start Time</th>
 					</tr>
 					<tr>
 						<td><%= @game.first_name %> <%= @game.last_name%>, email: <%= @game.email %></td>
@@ -17,6 +18,9 @@
 						<td><%= @game.skill_level %></td>
 						<td><%= @game.players_committed %></td>
 						<td><%= @game.players_looking_for %></td>
+						<td><% if @game.start_time %>
+							<%= @game.start_time.strftime("%d/%m/%Y %H:%M")%></td>
+						<% end %></td>
 					</tr>
 				</table>
 
@@ -30,7 +34,7 @@
 				
 				<% elsif @gamed_players.map(&:user_id).include?(current_user.id) %>
 					  <p>You signed Up for this Game already<p>
-					  	<button type="button" class="btn btn-danger"><a data-method="delete" href="/gamed_players/<%= @gamed_player_current.id %>" rel="nofollow">Remove Game</a></button>
+					  	<button type="button" class="btn btn-danger"><a data-method="delete" href="/gamed_players/<%= @gamed_player_current.id %>" rel="nofollow">Remove Yourself</a></button>
 					   
 
 					<% else %>

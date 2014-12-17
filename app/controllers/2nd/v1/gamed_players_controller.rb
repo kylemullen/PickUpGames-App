@@ -1,5 +1,5 @@
 class Api::V1::GamedPlayersController < ApplicationController
-respond_to :xml, :json, :html
+respond_to :xml, :json, :html 
 
 	def index
 	  @gamed_players = GamedPlayer.all

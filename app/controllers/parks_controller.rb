@@ -12,6 +12,9 @@ class ParksController < ApplicationController
 		@parks = Park.all
 		@sports = Sport.all
 		@parks = Park.joins(:sports).where("sports.name = ?", params[:sport]) if params[:sport]
+		if params[:sport]
+			@sport_image = params[:sport].downcase + '.png'
+		end
 	end
 
 	def show

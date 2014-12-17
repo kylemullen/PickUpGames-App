@@ -5,8 +5,9 @@ class GamedPlayersController < ApplicationController
 
 	def create
 		GamedPlayer.create(gamed_player_params)
+	
 		flash[:success] = "You Signed Up!"
-		redirect_to "/"
+		redirect_to "/games/#{gamed_player_params[:game_id]}"
 	end
 
 	def show
@@ -16,6 +17,10 @@ class GamedPlayersController < ApplicationController
 	end
 
 	def destroy
+		@gamed_player = GamedPlayer.find_by(:id => params[:id])
+		@gamed_player.destroy
+		flash[:danger] = "You're No Longer Signed Up"
+		redirect_to "/games"
 	end
 
 	def edit

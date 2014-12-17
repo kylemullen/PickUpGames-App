@@ -4,21 +4,12 @@ class GamesController < ApplicationController
 
 	def show
 		@games = Game.all
-		
 		@sports = Sport.all
 		@parks = Park.joins(:sports).where("sports.name = ?", params[:sport]) if params[:sport]
 		@game = Game.find_by(:id => params[:id])
-
 		@gamed_players = Game.find_by(:id => params[:id]).gamed_players
 		@gamed_player = GamedPlayer.new
-		# @gamed_players.each do |gamed_player|
-		# 	if gamed_player.user_id == current_user.id	
-		# 	@gamed_player = nil
-		# 		break 
-		# 	else 
-		# 	@gamed_player = GamedPlayer.new
-		# 	end
-		# end
+		@gamed_player_current = GamedPlayer.find_by(:user_id => current_user.id, :game_id => @game.id)
 	
 	end
 
@@ -34,21 +25,17 @@ class GamesController < ApplicationController
 		@sports = Sport.all
 	  @game = current_user.games.create(game_params)
 	  	redirect_to @game
-
-	  
 	end
 
 	def new
 		@games = Game.all
 		@court_id = params[:court_id]
-		
 	  @game = Game.new
 	  	if @game.save
 	  		redirect_to @game
 	  	end
 	  @sports = Sport.all
 	  @park_id = Park.find_by(:park_number => params[:court_id])
-
 	end
 
 	def edit
@@ -67,7 +54,6 @@ class GamesController < ApplicationController
 	end
 
 	def destroy
-		@games = Game.all
 		@game = Game.find_by(:id => params[:id])
 		@game.destroy
 		flash[:danger] = "Game Removed."
@@ -75,9 +61,7 @@ class GamesController < ApplicationController
 		@sports = Sport.all
 	end
 
-	def map
-	end
-
+	
 	def home
 		@games = Game.all
 		@sports = Sport.all

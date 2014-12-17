@@ -17,6 +17,12 @@ default: &default
   password:
   socket: /tmp/mysql.sock
 
+production: 
+  database: PickUpGames-app
+  adapter:  postgresql
+  coding: unicode
+  pool: 5
+
 development:
   <<: *default
   database: MatchGameSet-app_development

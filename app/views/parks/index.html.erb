@@ -52,6 +52,12 @@
 				      icon: image
 		  			});
 
+		  			google.maps.event.addListener(markers[<%= index %>], 'click', function() {
+    					new google.maps.InfoWindow({
+      					content: "<a href='/parks/<%= park.id %>'><%= park.name %></a>"
+  							}).open(map,markers[<%= index %>]);
+ 						 });
+
 		  		<% elsif park.lat && park.courts.any? %>
 		  			markers[<%= index %>] = new google.maps.Marker({
 				      position: new google.maps.LatLng(<%= park.lat %>, <%= park.lng %>),

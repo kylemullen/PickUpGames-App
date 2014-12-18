@@ -1,8 +1,6 @@
 <h1> Welcome to <%= @park.name.capitalize %> Park </h1>
 
 <h3> Available Courts At this Park </h3>
-<a href="http://www.google.com/maps/<%= @park.name %>, Chicago/<%= @park.lat.to_i.round(6) %>,-<%= @park.lng.to_i.round(6) %>,18z">Get Directions to this Park</a>
-
 
 	<table class="table table-striped">
 		<tr>
@@ -10,7 +8,7 @@
 			<th>Sport</th>
 			<th>Game Launch</th>
 			<% @count = 1%>
-		<% @park.courts.each do |court| %>
+	<% @park.courts.each do |court| %>
 		<tr>
 			<td><%= @count %></td>
 			<td><%= court.sport.name %></td>

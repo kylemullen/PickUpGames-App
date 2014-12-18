@@ -65,11 +65,12 @@
 
 			<div class="col-sm-4">
 
-				<h3>Other Users Signed Up </h3>
+				<h2>Other Users Signed Up </h2>
 				<table class="table table-striped">
 					<% @gamed_players.each do |player| %>
-						<h5> <%= player.user.first_name %> <%= player.user.last_name %> 
-							<%= player.user.email %> </h5>
+						<h4> <%= player.user.first_name %> <%= player.user.last_name %> 
+							<%= player.user.email %> </h4>
+						<h5> Players Bringing: <%= player.players_bringing %> </h5>
 					<% end %>
 
 

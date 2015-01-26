@@ -24,6 +24,7 @@ class GamedPlayersController < ApplicationController
 	end
 
 	def edit
+		@gamed_player = GamedPlayer.find_by(:id => params[:id])
 	end
 
 	private

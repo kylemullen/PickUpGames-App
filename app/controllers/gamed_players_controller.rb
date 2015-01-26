@@ -25,6 +25,15 @@ class GamedPlayersController < ApplicationController
 
 	def edit
 		@gamed_player = GamedPlayer.find_by(:id => params[:id])
+		@sports = Sport.all
+	end
+
+	def update
+		@sports = Sport.all
+		@game = GamedPlayer.find_by(:id => params[:id])
+		@gamed_player.update(gamed_player_params)
+		flash[:info] = "Your RSVP successfully changed."
+		redirect_to @game
 	end
 
 	private

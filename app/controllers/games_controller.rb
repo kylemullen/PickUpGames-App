@@ -48,7 +48,7 @@ class GamesController < ApplicationController
 		@games = Game.all
 		@game = Game.find_by(:id => params[:id])
 		@game.update(game_params)
-		flash[:info] = "Game Succesfully Modified."
+		flash[:info] = "Game Successfully Modified."
 		redirect_to @game
 		@sports = Sport.all
 	end

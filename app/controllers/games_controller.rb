@@ -5,7 +5,6 @@ class GamesController < ApplicationController
 	def show
 		@games = Game.all
 		@sports = Sport.all
-		@parks = Park.joins(:sports).where("sports.name = ?", params[:sport]) if params[:sport]
 		@game = Game.find_by(:id => params[:id])
 		@gamed_players = Game.find_by(:id => params[:id]).gamed_players
 		@gamed_player = GamedPlayer.new

@@ -16,4 +16,13 @@ describe Game do
 			expect(game.park_name).to eq("The Park")
 			end
 	end
+
+	describe 'gamed_players_total' do
+		it 'should return the total numbers of additional players signed up for a certain game and add it to the number of players originally signed up' do
+			game = Game.new(:id => 1, :title => "Game 1", :players_committed => 6)
+			game.gamed_players = GamedPlayer.new(:game_id => 1, :user_id => 2, :players_bringing => 2)
+			expect(game.gamed_players_total).to eq(8)
+			end
+	end
+
 end

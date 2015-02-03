@@ -14,7 +14,7 @@ class GamesController < ApplicationController
 
 	def index
 		@sports = Sport.all
-		@games = Game.all.where("end_time > ?" , Date.current)
+		@games = Game.all.where("end_time >= ?" , Date.current)
 		@parks = Park.joins(:sports).where("sports.name = ?", params[:sport]) if params[:sport]
 		var = params[:sport]
 	end

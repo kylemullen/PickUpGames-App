@@ -6,6 +6,7 @@ class Park < ActiveRecord::Base
   belongs_to :neighborhood
 
   def game_list
+  	courts.games
   	
   end
 end

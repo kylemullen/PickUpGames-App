@@ -1,6 +1,6 @@
 class GamesController < ApplicationController
 	# before_action :authenticate_user!
-	respond_to :xml, :json, :html
+	respond_to :json, :html
 
 	def show
 		@games = Game.all
@@ -14,7 +14,7 @@ class GamesController < ApplicationController
 
 	def index
 		@sports = Sport.all
-		@games = Game.all
+		@games = Game.all.where("end_time > ?" , Date.current)
 		@parks = Park.joins(:sports).where("sports.name = ?", params[:sport]) if params[:sport]
 		var = params[:sport]
 	end

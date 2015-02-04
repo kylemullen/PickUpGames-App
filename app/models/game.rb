@@ -1,7 +1,7 @@
 class Game < ActiveRecord::Base
 	belongs_to :user
 	belongs_to :court
-	has_one :gamed_player
+	# has_one :gamed_player
 	has_many :gamed_players
 
 	validates_presence_of :title

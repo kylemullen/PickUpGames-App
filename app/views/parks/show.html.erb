@@ -1,7 +1,10 @@
+
 <h1> Welcome to <%= @park.name.capitalize %> Park </h1>
 
 <h3> Available Courts At this Park </h3>
 
+<div class="row">
+  <div class="col-sm-5">
 	<table class="table table-striped">
 		<tr>
 			<th></th>
@@ -18,11 +21,43 @@
 			<% @count = @count + 1 %>
 		<% end %>
 	</table>
+	</div>
 
-<% @park.game_list.each do |game|  %>
-	
-<%= game.title %>
-<% end %>
+	<div class="col-sm-2">
+	</div>
+
+  <div class="col-sm-5">
+	<table class="table table-hover">
+		<h3>Games Going on at this Park</h3>
+		<tr>
+			<th></th>
+			<th>Game Title/Sport</th>
+			<th>Park/Skill Level</th>
+			<th>Creator</th>
+			<th>Players Looking For</th>
+			<th>Game Start Time</th>
+		</tr>
+		<% @count = 1 %>
+		<% @park.game_list.each do |game| %>
+		<% if game.end_time > Time.now %>
+		<tr>
+				<td><%= @count %></td>
+				<td><a href="/games/<%= game.id %>"><%= game.title %></a>-
+						<%= game.court.sport.name %></td>
+				<td><a href="/parks/<%= game.court.park.id %>"><%= game.court.park.name.capitalize %></a>-
+						<%= game.skill_level %></td>
+				<td><%= game.first_name %></td>
+				<td><%= game.players_looking_for - game.signed_up_players %></td>
+				<td><%= game.start_time.strftime("%b %e, %l:%M %p")%></td>
+		</tr>
+				<% @count += 1 %>
+				<% else %>
+				<% @count += 1 %>
+				<% end %>
+			<% end %>
+	</table>
+  </div>
+</div>
 
 <script type="text/javascript"
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCXgnWnrHcxQ0i1E9k2cWmfC_mRzwru97A">

@@ -18,9 +18,10 @@ class ParksController < ApplicationController
 	end
 
 	def show
-		@games = Game.all
+		@games = Game.all.where("end_time >= ?" , Date.current)
 		@park = Park.find_by(:id => params[:id])
 		@sports = Sport.all
+		@park_games = Game.find_by(:id )
 	end
 
 	def destroy

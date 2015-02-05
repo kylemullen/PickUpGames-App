@@ -17,10 +17,13 @@
 						<td><%= @game.sport_name %> Court at <a href="/parks/<%= @game.court.park.id %>"><%= @game.park_name.capitalize %></td>
 						<td><%= @game.skill_level %></td>
 						<td><%= @game.players_committed %></td>
-						<td><%= @game.players_looking_for %></td>
-						<td><% if @game.start_time %>
-							<%= @game.start_time.strftime("%b %e, %l:%M %p")%></td>
-						<% end %></td>
+						<% if @game.players_looking_for - @game.signed_up_players > 0 %>
+						<td><%= @game.players_looking_for - @game.signed_up_players %></td>
+						<% elsif %>
+						<% @game_full = true %>
+					  <td>Game is Full</td>
+						<% end %>	
+						<td><%= @game.start_time.strftime("%b %e, %l:%M %p")%></td>
 					</tr>
 				</table>
 
@@ -68,7 +71,7 @@
 							<%= player.user.email %> </h4>
 						<h5> Players Bringing: <%= player.players_bringing %> </h5>
 					<% end %>
-
+ 
 			</div>
 		</div>
 	</div>

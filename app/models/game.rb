@@ -1,7 +1,6 @@
 class Game < ActiveRecord::Base
 	belongs_to :user
 	belongs_to :court
-	# has_one :gamed_player
 	has_many :gamed_players
 
 	validates_presence_of :title
@@ -20,6 +19,15 @@ class Game < ActiveRecord::Base
   	new_total = players_committed + count 
   	return new_total
   end
+
+  def signed_up_players
+  	count = 0
+  	gamed_players.each do |player|
+  		count =+ player.players_bringing
+  	end
+  	return count
+  end
+
 
 	def park_name
 		court.park.name

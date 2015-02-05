@@ -21,12 +21,16 @@
 				<td><a href="/parks/<%= game.court.park.id %>"><%= game.court.park.name.capitalize %></a>-
 						<%= game.skill_level %></td>
 				<td><%= game.first_name %></td>
-				<td><%= game.players_looking_for %></td>
-			<% if game.start_time %>
+				<% if game.players_looking_for - game.signed_up_players > 0 %>
+				<td><%= game.players_looking_for - game.signed_up_players %></td>
+				<% elsif %>
+				<td>Game is Full</td>
+				<% end %>
+				<% if game.start_time %>
 				<td><%= game.start_time.strftime("%b %e, %l:%M %p")%></td>
-			<% end %>
+				<% end %>
 		</tr>
-				<% @count = @count + 1 %>
+				<% @count += 1 %>
 				<% end %>
 	</table>
   </div>

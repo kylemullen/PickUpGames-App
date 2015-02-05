@@ -8,6 +8,7 @@ class GamesController < ApplicationController
 		@game = Game.find_by(:id => params[:id])
 		@gamed_players = Game.find_by(:id => params[:id]).gamed_players
 		@gamed_player = GamedPlayer.new
+		@gamed_player_current = GamedPlayer.find_by(:user_id => current_user.id, :game_id => @game.id)
 		@game_full = false
 	end
 

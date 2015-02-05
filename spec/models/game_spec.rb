@@ -25,4 +25,13 @@ describe Game do
 			end
 	end
 
+	describe 'signed_up_players' do
+		it 'should return the total numbers of additional players signed up for a certain game that doesnt include the initial creator' do
+			game = Game.new(:id => 1, :title => "Game 1", :players_committed => 1)
+			game.gamed_players << GamedPlayer.new(:game_id => 1, :user_id => 2, :players_bringing => 2)
+			game.gamed_players << GamedPlayer.new(:game_id => 1, :user_id => 4, :players_bringing => 4)
+			expect(game.signed_up_players).to eq(6)
+			end
+	end
+
 end

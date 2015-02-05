@@ -23,7 +23,7 @@ class Game < ActiveRecord::Base
   def signed_up_players
   	count = 0
   	gamed_players.each do |player|
-  		count =+ player.players_bringing
+  		count += player.players_bringing
   	end
   	return count
   end

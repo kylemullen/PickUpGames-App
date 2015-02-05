@@ -35,7 +35,7 @@
 					  <p>You signed Up for this Game already<p>
 					  	<button type="button" class="btn btn-danger"><a data-method="delete" href="/gamed_players/<%= @gamed_player_current.id %>" rel="nofollow">Remove Yourself</a></button>
 					  
-				<% else %>
+				<% elsif @game_full = false %>
 							<%= form_for @gamed_player do |f| %>
 					 		<div class="col-sm-4">
 								<div class="panel panel-danger">

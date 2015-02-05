@@ -32,7 +32,7 @@
 						<button type="button" class="btn btn-danger"><a data-method="delete" href="/games/<%= @game.id %>" rel="nofollow">Remove Game</a></button>
 						<button type="button" class="btn btn-info"><a data-method="get" href="/games/<%= @game.id %>/edit" rel="nofollow">Modify Game</a></button>
 				
-				<% elsif @gamed_players.map(&:user_id).include?(current_user.id) %>
+				<% elsif @gamed_players.map(&:user_id).include?(current_user.id) && @game_full = false %>
 					  <p>You signed Up for this Game already<p>
 					  	<button type="button" class="btn btn-danger"><a data-method="delete" href="/gamed_players/<%= @gamed_player_current.id %>" rel="nofollow">Remove Yourself</a></button>
 					  

@@ -6,7 +6,10 @@ class Park < ActiveRecord::Base
   belongs_to :neighborhood
 
   def game_list
-  	courts.games
-  	
+  	game_list =[]
+  	games.each do |game|
+  		game_list << game
+  	end
+  	return game_list
   end
 end

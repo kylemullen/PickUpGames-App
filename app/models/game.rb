@@ -28,6 +28,10 @@ class Game < ActiveRecord::Base
   	return count
   end
 
+  def make_closed
+  	status = "closed"
+  end
+
 
 	def park_name
 		court.park.name

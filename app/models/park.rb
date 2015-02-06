@@ -12,4 +12,5 @@ class Park < ActiveRecord::Base
   	end
   	return game_list
   end
+
 end

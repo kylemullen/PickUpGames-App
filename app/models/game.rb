@@ -36,7 +36,7 @@ class Game < ActiveRecord::Base
   def game_full?
     if revised_players_looking_for > 0
       return false
-    elsif revised_players_looking_for =< 0
+    elsif revised_players_looking_for <= 0
       return true
     end
   end

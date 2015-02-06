@@ -34,4 +34,22 @@ describe Game do
 			end
 	end
 
+	describe 'game_full?' do
+		it 'should return if the game is full or not' do
+			game = Game.new(:id => 1, :title => "Game 2", :players_looking_for => 4)
+			game.gamed_players << GamedPlayer.new(:game_id =>1, :players_bringing => 1)
+			game.gamed_players << GamedPlayer.new(:game_id =>1, :players_bringing => 3)
+			expect(game.game_full?).to eq(true)
+			end
+	end
+
+	describe 'revised_players_looking_for' do
+		it 'should return an updated version of players_looking_for for an individual game' do
+			game = Game.new(:id => 1, :title => "Game 2", :players_looking_for => 4)
+			game.gamed_players << GamedPlayer.new(:game_id =>1, :players_bringing => 1)
+			expect(game.revised_players_looking_for).to eq(3)
+		end
+	end
+
+
 end

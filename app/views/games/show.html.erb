@@ -18,7 +18,7 @@
 						<td><%= @game.players_committed %></td>
 						<% if @game.players_looking_for - @game.signed_up_players > 0 %>
 						<td><%= @game.players_looking_for - @game.signed_up_players %></td>
-						<% elsif %>
+						<% else %>
 						<% @game_full = true %>
 					  <td>Game is Full</td>
 						<% end %>	
@@ -35,7 +35,7 @@
 					  <p>You signed Up for this Game already<p>
 					  	<button type="button" class="btn btn-danger"><a data-method="delete" href="/gamed_players/<%= @gamed_player_current.id %>" rel="nofollow">Remove Yourself</a></button>
 					  
-				<% elsif @game_full = false %>
+				<% elsif @game.players_looking_for - @game.signed_up_players > 0 %>
 							<%= form_for @gamed_player do |f| %>
 					 		<div class="col-sm-4">
 								<div class="panel panel-danger">
@@ -66,9 +66,11 @@
 				<h2>Other Users Signed Up </h2>
 				<table class="table table-striped">
 					<% @gamed_players.each do |player| %>
-						<h4> <%= player.user.first_name %> <%= player.user.last_name %> 
-							<%= player.user.email %> </h4>
-						<h5> Players Bringing: <%= player.players_bringing %> </h5>
+					<ul>
+						<h3><%= player.user.first_name %> <%= player.user.last_name %></h3>
+						<li><%= player.user.email %></h4>
+						<li>Players Bringing:  <%= player.players_bringing %></li>
+					</ul>
 					<% end %>
  
 			</div>

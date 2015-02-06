@@ -20,12 +20,25 @@ class Game < ActiveRecord::Base
   	return new_total
   end
 
+
   def signed_up_players
-  	count = 0
-  	gamed_players.each do |player|
-  		count += player.players_bringing
-  	end
-  	return count
+    count = 0
+    gamed_players.each do |player|
+      count += player.players_bringing
+    end
+    return count
+  end
+
+  def revised_players_looking_for
+    return players_looking_for - signed_up_players
+  end
+
+  def game_full?
+    if revised_players_looking_for > 0
+      return false
+    elsif revised_players_looking_for =< 0
+      return true
+    end
   end
 
   def make_closed

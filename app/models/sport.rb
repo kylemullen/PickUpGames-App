@@ -7,7 +7,7 @@ end
 
 def park_list
 	park_list = []
-	parks.each do |park|
+	courts.park.each do |park|
 		park_list << park
 	end
 	return park_list

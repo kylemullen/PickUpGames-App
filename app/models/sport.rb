@@ -5,10 +5,12 @@ class Sport < ActiveRecord::Base
   has_many :parks, :through => :courts
 end
 
-def park_list
-	park_list = []
-	courts.park.each do |park|
+	def park_list
+		park_list = []   #map
+		courts.park.each do |park|
 		park_list << park
 	end
 	return park_list
+
+
 end

@@ -12,7 +12,7 @@ class Game < ActiveRecord::Base
   
   def gamed_players_total
   	count = 0
-  	gamed_players.each do |player|
+  	gamed_players.each do |player|  # each_with_object
   		count += player.players_bringing
   	end
   	new_total = players_committed + count 
@@ -22,7 +22,7 @@ class Game < ActiveRecord::Base
 
   def signed_up_players
     count = 0
-    gamed_players.each do |player|
+    gamed_players.each do |player|   # each_with_object
       count += player.players_bringing
     end
     return count

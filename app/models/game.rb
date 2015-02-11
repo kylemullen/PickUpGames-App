@@ -40,6 +40,14 @@ class Game < ActiveRecord::Base
     end
   end
 
+  def game_today?
+    if end_time > Time.now
+      return true
+    elsif end_time < Time.now
+      return false
+    end
+  end
+
   def make_closed
   	status = "closed"
   end

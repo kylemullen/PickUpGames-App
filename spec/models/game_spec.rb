@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 describe Game do
+
 	describe 'email' do
 		it 'should return the email of the user that created the game' do
 			game = Game.new(:title => "Game 2", :user_id => 1)
@@ -48,6 +49,13 @@ describe Game do
 			game = Game.new(:id => 1, :title => "Game 2", :players_looking_for => 4)
 			game.gamed_players << GamedPlayer.new(:game_id =>1, :players_bringing => 1)
 			expect(game.revised_players_looking_for).to eq(3)
+		end
+	end
+
+	describe 'game_today?' do
+		it 'should return an false for a game that is from a previous day' do
+			game = Game.new(:id => 1, :title => "Game 2", :players_looking_for => 4, :end_time => (Time.now - 86400))
+			expect(game.game_today?).to eq(false)
 		end
 	end
 

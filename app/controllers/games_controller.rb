@@ -1,6 +1,7 @@
 class GamesController < ApplicationController
 	before_action :authenticate_user!, :only => [:edit, :destroy, :new, :update, :create, :show]
 	before_action :initialize_sports
+	before_action :initialize_games
 	respond_to :json, :html
 
 	def show
@@ -68,6 +69,10 @@ class GamesController < ApplicationController
 	end
 
 	private
+
+	def initialize_games
+		@games = Game.all
+	end
 
 	def initialize_sports
 		@sports = Sport.all

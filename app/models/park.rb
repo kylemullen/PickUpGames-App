@@ -13,4 +13,11 @@ class Park < ActiveRecord::Base
   	return game_list
   end
 
+  def court_list
+  	court_list = []
+  	courts.each do |court|
+  		court_list << court
+  	end
+  end
+
 end

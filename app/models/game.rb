@@ -14,13 +14,12 @@ class Game < ActiveRecord::Base
     count = gamed_players.inject(0) do |number, player|
       number += player.players_bringing 
     end
-
   	return count + players_committed
   end
 
 
   def signed_up_players
-    count = gamed_players.inject(0) do |number, player|   # each_with_object
+    count = gamed_players.inject(0) do |number, player| 
       number += player.players_bringing
     end
     return count
@@ -44,6 +43,12 @@ class Game < ActiveRecord::Base
     elsif end_time < Time.now
       return false
     end
+  end
+
+  def 
+    # players_looking_for - signed_up_players > 0
+  end
+    
   end
 
   def 

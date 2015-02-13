@@ -6,11 +6,15 @@ class Sport < ActiveRecord::Base
 
 
 	def park_list
-		park_list = []   #map
-		courts.park.each do |park|
-			park_list << park
-		end
+		# parks = courts.parks.
+		# park_list = []   #map
+		# courts.park.each do |park|
+		# 	park_list << park
+		# end
+
+		parks = courts.park.map(&:court)
 	return park_list
+
 
 	end
 

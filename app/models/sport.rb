@@ -6,16 +6,13 @@ class Sport < ActiveRecord::Base
 
 
 	def park_list
-		# parks = courts.parks.
-		# park_list = []   #map
-		# courts.park.each do |park|
-		# 	park_list << park
+		# parks = []   #map
+		# courts.each do |court|
+		# 	 parks << court.park_id
 		# end
-
-		parks = courts.park.map(&:court)
-	return park_list
-
-
+		# return parks
+		parks = courts.map(&:park_number)
+		return parks
 	end
 
 

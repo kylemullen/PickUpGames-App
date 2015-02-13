@@ -3,14 +3,17 @@ class Sport < ActiveRecord::Base
   has_many :courts
   has_many :games, :through => :courts
   has_many :parks, :through => :courts
-end
+
 
 	def park_list
 		park_list = []   #map
 		courts.park.each do |park|
-		park_list << park
-	end
+			park_list << park
+		end
 	return park_list
+
+	end
+
 
 
 end

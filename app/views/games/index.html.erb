@@ -4,35 +4,34 @@
   <div class="col-sm-6">
     
 	<table class="table table-hover">
-		<tr>
+	<tr>
 			<th></th>
 			<th>Game Title/Sport</th>
 			<th>Park/Skill Level</th>
 			<th>Creator</th>
 			<th>Players Looking For</th>
 			<th>Game Start Time</th>
-		</tr>
-		<% @count = 1 %>
-		<% @games.each do |game| %>
-		<tr>
-				<td><%= @count %></td>
-				<td><a href="/games/<%= game.id %>"><%= game.title %></a>-
-						<%= game.court.sport.name %></td>
-				<td><a href="/parks/<%= game.court.park.id %>"><%= game.court.park.name.capitalize %></a>-
-						<%= game.skill_level %></td>
-				<td><%= game.first_name %></td>
-				<% if game.players_looking_for - game.signed_up_players > 0 %>
-				<td><%= game.players_looking_for - game.signed_up_players %></td>
-				<% elsif %>
-				<td>Game is Full</td>
-				<% end %>
-				<% if game.start_time %>
-				<td><%= game.start_time.strftime("%b %e, %l:%M %p")%></td>
-				<% end %>
-		</tr>
+	</tr>
+			<% @count = 1 %>
+			<% @games.each do |game| %>
+	<tr>
+			<td><%= @count %></td>
+			<td><a href="/games/<%= game.id %>"><%= game.title %></a>-<%= game.court.sport.name %></td>
+			<td><a href="/parks/<%= game.court.park.id %>"><%= game.court.park.name.capitalize %></a>-<%= game.skill_level %></td>
+			<td><%= game.first_name %></td>
+		<% if game.players_looking_for - game.signed_up_players > 0 %>
+			<td><%= game.players_looking_for - game.signed_up_players %></td>
+		<% elsif %>
+			<td>Game is Full</td>
+		<% end %>
+		<% if game.start_time %>
+			<td><%= game.start_time.strftime("%b %e, %l:%M %p")%></td>
+		<% end %>
+	</tr>
 				<% @count += 1 %>
 				<% end %>
 	</table>
+	
   </div>
 </div>
 

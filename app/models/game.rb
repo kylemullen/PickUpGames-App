@@ -20,9 +20,8 @@ class Game < ActiveRecord::Base
 
 
   def signed_up_players
-    count = 0
-    gamed_players.each do |player|   # each_with_object
-      count += player.players_bringing
+    count = gamed_players.inject(0) do |number, player|   # each_with_object
+      number += player.players_bringing
     end
     return count
   end

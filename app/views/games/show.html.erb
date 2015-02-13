@@ -26,16 +26,16 @@
 					</tr>
 				</table>
 
-				<% if @game.user_id == current_user.id %>
+				<% if @your_game %>
 					<h4> This is Your Game </h4>
 						<button type="button" class="btn btn-danger"><a data-method="delete" href="/games/<%= @game.id %>" rel="nofollow">Remove Game</a></button>
 						<button type="button" class="btn btn-info"><a data-method="get" href="/games/<%= @game.id %>/edit" rel="nofollow">Modify Game</a></button>
 				
-				<% elsif @gamed_players.map(&:user_id).include?(current_user.id)%>
+				<% elsif @user_signed_up %>
 					  <p>You signed Up for this Game already<p>
 					  	<button type="button" class="btn btn-danger"><a data-method="delete" href="/gamed_players/<%= @gamed_player_current.id %>" rel="nofollow">Remove Yourself</a></button>
 					  
-				<% elsif @game.players_looking_for - @game.signed_up_players > 0 %>
+				<% elsif @game.game_full? == false %>
 							<%= form_for @gamed_player do |f| %>
 					 		<div class="col-sm-4">
 								<div class="panel panel-danger">

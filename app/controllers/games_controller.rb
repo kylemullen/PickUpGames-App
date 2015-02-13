@@ -6,12 +6,22 @@ class GamesController < ApplicationController
 
 	def show
 		@games = Game.all
-		
 		@game = Game.find_by(:id => params[:id])
 		@gamed_players = Game.find_by(:id => params[:id]).gamed_players
 		@gamed_player = GamedPlayer.new
 		@gamed_player_current = GamedPlayer.find_by(:user_id => current_user.id, :game_id => @game.id)
 		@game_full = false
+		if @game.gamed_players.map(&:user_id).include?(current_user.id)
+			@user_signed_up = true
+		else
+			@user_signed_up = false
+		end
+		
+		if @game.user_id == current_user.id
+			@your_game = true
+		else
+			@your_game = false
+		end
 	end
 
 	def index

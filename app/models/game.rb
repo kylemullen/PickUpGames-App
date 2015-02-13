@@ -11,12 +11,11 @@ class Game < ActiveRecord::Base
   validates_presence_of :user_id
   
   def gamed_players_total
-  	count = 0
-  	gamed_players.each do |player|  # each_with_object
-  		count += player.players_bringing
-  	end
-  	new_total = players_committed + count 
-  	return new_total
+    count = gamed_players.inject(0) do |number, player|
+      number += player.players_bringing 
+    end
+
+  	return count + players_committed
   end
 
 
@@ -47,6 +46,8 @@ class Game < ActiveRecord::Base
       return false
     end
   end
+
+  def 
 
   def make_closed
   	status = "closed"

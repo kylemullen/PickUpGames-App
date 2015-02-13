@@ -46,7 +46,7 @@
               <% end %>
             </li>
             <li class="hidden-sm">
-              <% if current_user && @games.sample(where("end_time >= ?" , Date.current)) %>
+              <% if current_user && @games.sample %>
                 <% sample_game = @games.sample %>
                   <a href="/games/<%= sample_game.id%>">Surpise Me</a>
               <% end %>

@@ -1,49 +1,47 @@
-
-		<div class="row">
-			<div class="col-sm-8">
-			<h1> The Game: <%= @game.title %> -- <%= @game.sport_name %> </h1>
-				<table class="table table-hover">
-					<tr>
-						<th>Created By</th>
-						<th>Park</th>
-						<th>Skill Level</th>
-						<th>Players Committed</th>
-						<th>Still Looking For</th>
-						<th>Start Time</th>
-					</tr>
-					<tr>
-						<td><%= @game.first_name %> <%= @game.last_name%>, email: <%= @game.email %></td>
-						<td><%= @game.sport_name %> Court at <a href="/parks/<%= @game.court.park.id %>"><%= @game.park_name.capitalize %></td>
-						<td><%= @game.skill_level %></td>
-						<td><%= @game.players_committed %></td>
-						<% if @game.players_looking_for - @game.signed_up_players > 0 %>
-						<td><%= @game.players_looking_for - @game.signed_up_players %></td>
-						<% else %>
-						<% @game_full = true %>
-					  <td>Game is Full</td>
-						<% end %>	
-						<td><%= @game.start_time.strftime("%b %e, %l:%M %p")%></td>
-					</tr>
-				</table>
+<div class="row">
+	<div class="col-sm-8">
+		<h1> The Game: <%= @game.title %> -- <%= @game.sport_name %> </h1>
+			<table class="table table-hover">
+				<tr>
+					<th>Created By</th>
+					<th>Park</th>
+					<th>Skill Level</th>
+					<th>Players Committed</th>
+					<th>Still Looking For</th>
+					<th>Start Time</th>
+				</tr>
+				<tr>
+					<td><%= @game.first_name %> <%= @game.last_name%>, email: <%= @game.email %></td>
+					<td><%= @game.sport_name %> Court at <a href="/parks/<%= @game.court.park.id %>"><%= @game.park_name.capitalize %></td>
+					<td><%= @game.skill_level %></td>
+					<td><%= @game.players_committed %></td>
+				<% if @game.players_looking_for - @game.signed_up_players > 0 %>
+					<td><%= @game.players_looking_for - @game.signed_up_players %></td>
+				<% elsif @game_full = true %>
+					<td>Game is Full</td>
+				<% end %>	
+					<td><%= @game.start_time.strftime("%b %e, %l:%M %p")%></td>
+				</tr>
+			</table>
 
 				<% if @your_game %>
-					<h4> This is Your Game </h4>
-						<button type="button" class="btn btn-danger"><a data-method="delete" href="/games/<%= @game.id %>" rel="nofollow">Remove Game</a></button>
-						<button type="button" class="btn btn-info"><a data-method="get" href="/games/<%= @game.id %>/edit" rel="nofollow">Modify Game</a></button>
+				<h4> This is Your Game </h4>
+					<button type="button" class="btn btn-danger"><a data-method="delete" href="/games/<%= @game.id %>" rel="nofollow">Remove Game</a></button>
+					<button type="button" class="btn btn-info"><a data-method="get" href="/games/<%= @game.id %>/edit" rel="nofollow">Modify Game</a></button>
 				
 				<% elsif @user_signed_up %>
-					  <p>You signed Up for this Game already<p>
-					  	<button type="button" class="btn btn-danger"><a data-method="delete" href="/gamed_players/<%= @gamed_player_current.id %>" rel="nofollow">Remove Yourself</a></button>
+				 <p>You signed Up for this Game already<p>
+				 	<button type="button" class="btn btn-danger"><a data-method="delete" href="/gamed_players/<%= @gamed_player_current.id %>" rel="nofollow">Remove Yourself</a></button>
 					  
 				<% elsif @game.game_full? == false %>
-							<%= form_for @gamed_player do |f| %>
-					 		<div class="col-sm-4">
-								<div class="panel panel-danger">
-									<div class="panel-heading">
-											<h3 class="panel-title">How Many are you bringing(including yourself):</h3>
-										</div>
-									<div class="panel-body">
-										<%= f.text_field :players_bringing %>
+					<%= form_for @gamed_player do |f| %>
+				 		<div class="col-sm-4">
+							<div class="panel panel-danger">
+								<div class="panel-heading">
+									<h3 class="panel-title">How Many are you bringing(including yourself):</h3>
+								</div>
+								<div class="panel-body">
+									<%= f.text_field :players_bringing %>
 								</div>
 							</div>
 								
@@ -52,26 +50,22 @@
 							<div>
 								<%= f.submit "Sign Up", class: "btn btn-danger" %>
 							</div>
-							</div>
+						</div>
 
-							<% end %>
-						<% end %>
-					
-
-			</div>
+					<% end %>
+				<% end %>
+	</div>
 			
 
-			<div class="col-sm-4">
+	<div class="col-sm-4">
 
-				<h2>Other Users Signed Up </h2>
-				<table class="table table-striped">
-					<% @gamed_players.each do |player| %>
-					<ul>
-						<h3><%= player.user.first_name %> <%= player.user.last_name %></h3>
-						<li><%= player.user.email %></h4>
-						<li>Players Bringing:  <%= player.players_bringing %></li>
-					</ul>
-					<% end %>
+		<h2>Other Users Signed Up </h2>
+			<% @gamed_players.each do |player| %>
+			<h3><%= player.user.first_name %> <%= player.user.last_name %></h3>
+				<ul>
+					<li><%= player.user.email %></h4>
+					<li>Players Bringing:  <%= player.players_bringing %></li>
+				</ul>
+			<% end %>
  
-			</div>
-		</div>
+	</div>

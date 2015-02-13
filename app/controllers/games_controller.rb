@@ -11,12 +11,15 @@ class GamesController < ApplicationController
 		@gamed_player = GamedPlayer.new
 		@gamed_player_current = GamedPlayer.find_by(:user_id => current_user.id, :game_id => @game.id)
 		@game_full = false
+
+		#made to check to see if current user signed up for the game and give you the option to remove yourself from the game
 		if @game.gamed_players.map(&:user_id).include?(current_user.id)
 			@user_signed_up = true
 		else
 			@user_signed_up = false
 		end
-		
+
+		#made for the view to provide butons for modifying/deleting the game if the current_user created the game
 		if @game.user_id == current_user.id
 			@your_game = true
 		else

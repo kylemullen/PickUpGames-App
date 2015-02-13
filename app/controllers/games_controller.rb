@@ -28,7 +28,7 @@ class GamesController < ApplicationController
 	end
 
 	def index
-		
+		#making sure that the index page is only showing games that are from today
 		@games = Game.all.where("end_time >= ?" , Date.current)
 		@parks = Park.joins(:sports).where("sports.name = ?", params[:sport]) if params[:sport]
 		var = params[:sport]

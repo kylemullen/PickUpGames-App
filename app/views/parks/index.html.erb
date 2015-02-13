@@ -9,7 +9,6 @@
 					<tr>
 						<th>Park Name</th>
 					</tr>
-
 					<tr ng-repeat="park in parks | filter: { name: parkFilter } | orderBy:orderAttribute:sortDirection | limitTo:20">
 						<td><a href="/parks/{{ park.id }}">{{ park.name }}</a></td>
 					</tr>
@@ -78,7 +77,6 @@
       <% end %>
       }
       google.maps.event.addDomListener(window, 'load', initialize);
-
     </script>
 	</div>
 </div>

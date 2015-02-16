@@ -11,7 +11,7 @@ class Sport < ActiveRecord::Base
 		# 	 parks << court.park_id
 		# end
 		# return parks
-		parks = courts.map(&:park_number)
+		parks = courts.map(&:park_id)
 		return parks
 	end
 

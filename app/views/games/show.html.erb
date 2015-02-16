@@ -17,7 +17,7 @@
 					<td><%= @game.players_committed %></td>
 				<% if @game.players_looking_for - @game.signed_up_players > 0 %>
 					<td><%= @game.players_looking_for - @game.signed_up_players %></td>
-				<% elsif @game_full = true %>
+				<% elsif @game.game_full? == true %>
 					<td>Game is Full</td>
 				<% end %>	
 					<td><%= @game.start_time.strftime("%b %e, %l:%M %p")%></td>

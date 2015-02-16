@@ -45,13 +45,9 @@ class Game < ActiveRecord::Base
     end
   end
 
-  def 
-    # players_looking_for - signed_up_players > 0
-  end
-    
-  end
-
-  def 
+  # def 
+  #   # players_looking_for - signed_up_players > 0
+  # end
 
   def make_closed
   	status = "closed"

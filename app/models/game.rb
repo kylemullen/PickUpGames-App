@@ -45,9 +45,14 @@ class Game < ActiveRecord::Base
     end
   end
 
-  # def 
-  #   # players_looking_for - signed_up_players > 0
-  # end
+  def game_sample(game_array)
+    game = game_array.where("end_time >= ?" , Date.current)
+    if game
+      return game
+    else
+      return false
+    end
+  end
 
   def make_closed
   	status = "closed"

@@ -5,7 +5,6 @@ class GamesController < ApplicationController
 	respond_to :json, :html
 
 	def show
-		@games = Game.all
 		@game = Game.find_by(:id => params[:id])
 		@gamed_players = Game.find_by(:id => params[:id]).gamed_players
 		@gamed_player = GamedPlayer.new
@@ -34,25 +33,21 @@ class GamesController < ApplicationController
 	end
 
 	def create
-		@games = Game.all
 	  @game = current_user.games.create(game_params)
 	  	redirect_to @game
 	end
 
 	def new
-		@games = Game.all
 		@court_id = params[:court_id]
 	  @game = Game.new
 	  @park_id = Park.find_by(:park_number => params[:court_id])
 	end
 
 	def edit
-		@games = Game.all
 		@game = Game.find_by(:id => params[:id])
 	end
 
 	def update
-		@games = Game.all
 		@game = Game.find_by(:id => params[:id])
 		@game.update(game_params)
 		flash[:info] = "Game Successfully Modified."
@@ -68,7 +63,6 @@ class GamesController < ApplicationController
 
 	
 	def home
-		@games = Game.all
 	end
 
 	private

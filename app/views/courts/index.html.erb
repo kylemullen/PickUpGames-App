@@ -18,8 +18,7 @@
 					<td><%= @count %></td>
 					<td><a href="/games/<%= game.id %>"><%= game.title %></a>-
 					<%= game.court.sport.name %></td>
-					<td><a href="/parks/<%= game.court.park.id %>"><%= game.court.park.name.capitalize %></a>-
-					<%= game.skill_level %></td>
+					<td><a href="/parks/<%= game.court.park.id %>"><%= game.court.park.name.capitalize %></a>-<%= game.skill_level %></td>
 					<td><%= game.first_name %></td>
 					<td><%= game.players_looking_for %></td>
 				</tr>

@@ -34,7 +34,8 @@ class GamesController < ApplicationController
 
 	def create
 	  @game = current_user.games.create(game_params)
-	  	redirect_to @game
+	  flash[:success] = "Alright! Your Game is ready to go!"
+	  redirect_to @game
 	end
 
 	def new

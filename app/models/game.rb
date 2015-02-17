@@ -45,13 +45,8 @@ class Game < ActiveRecord::Base
     end
   end
 
-  def game_sample(game_array)
-    game = game_array.where("end_time >= ?" , Date.current)
-    if game
-      return game
-    else
-      return false
-    end
+  def self.sample_game
+    return Game.where("end_time" > ?", Time.current).sample
   end
 
   def make_closed

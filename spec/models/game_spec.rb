@@ -9,13 +9,14 @@ describe Game do
 			expect(game.email).to eq("myemail@email.com")
 		end
 	end		
+
 	describe 'park_name' do
 		it 'should return the name of the park that is where the game is taking place' do
 			game = Game.new(:title => "Game 2", :court_id => 1)
 			game.court = Court.new(:id => 1, :park_id => 1)
 			game.court.park = Park.new(:id => 1, :name => "The Park")
 			expect(game.park_name).to eq("The Park")
-			end
+		end
 	end
 
 	describe 'gamed_players_total' do
@@ -23,7 +24,7 @@ describe Game do
 			game = Game.new(:id => 1, :title => "Game 1", :players_committed => 6)
 			game.gamed_players << GamedPlayer.new(:game_id => 1, :user_id => 2, :players_bringing => 2)
 			expect(game.gamed_players_total).to eq(8)
-			end
+		end
 	end
 
 	describe 'signed_up_players' do
@@ -32,7 +33,7 @@ describe Game do
 			game.gamed_players << GamedPlayer.new(:game_id => 1, :user_id => 2, :players_bringing => 2)
 			game.gamed_players << GamedPlayer.new(:game_id => 1, :user_id => 4, :players_bringing => 4)
 			expect(game.signed_up_players).to eq(6)
-			end
+		end
 	end
 
 	describe 'game_full?' do
@@ -41,7 +42,7 @@ describe Game do
 			game.gamed_players << GamedPlayer.new(:game_id =>1, :players_bringing => 1)
 			game.gamed_players << GamedPlayer.new(:game_id =>1, :players_bringing => 3)
 			expect(game.game_full?).to eq(true)
-			end
+		end
 	end
 
 	describe 'revised_players_looking_for' do
@@ -59,5 +60,11 @@ describe Game do
 		end
 	end
 
+	describe 'self.sample_game' do
+		it 'should return the game from that day, for the sample_game' do
+			game = Game.create(:id => 1, :title => "Game 1", :players_looking_for => 2, :start_time => (Time.current + 50000), :end_time => (Time.current + 80000))
+			expect(Game.sample_game).to eq(game)
+		end
+	end
 
 end

@@ -6,7 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-sports = Sport.create([{ id: 1, name: 'Basketball' }, { id: 2, name: 'Soccer' }, { id: 3,name: 'Baseball' }, { id: 4, name: 'Volleyball' }, { id: 5, name: 'Tennis' }])
+Sport.create!([{ id: 1, name: 'Basketball' }, { id: 2, name: 'Soccer' }, { id: 3,name: 'Baseball' }, { id: 4, name: 'Volleyball' }, { id: 5, name: 'Tennis' }])
 
 
 parks = Unirest.get("http://data.cityofchicago.org/resource/wwy2-k7b3.json").body
@@ -55,4 +55,4 @@ parks.each do |park|
 end
 
 end
-puts "DONE!"
+puts "Parks and Sports Seeded!  Your database should be ready to roll."

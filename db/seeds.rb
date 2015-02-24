@@ -50,7 +50,9 @@ parks.each do |park|
 
 
 	rescue
-	end
+end
+
+sports = Sport.create([{ id: 1, name: 'Basketball' }, { id: 2, name: 'Soccer' }, { id: 3,name: 'Baseball' }, { id: 4, name: 'Volleyball' }, { id: 5, name: 'Tennis' },
 
 end
 puts "DONE!"

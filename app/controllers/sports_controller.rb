@@ -3,12 +3,6 @@ class SportsController < ApplicationController
 
 	before_action :initialize_games
 
-	def create
-	end
-
-	def new
-	end
-
 	def index
 		@sport = Sport.find_by(:params[:id])
 		@sports = Sport.all
@@ -20,16 +14,7 @@ class SportsController < ApplicationController
 		@sports = Sport.all
 		@parks = Park.all
 		@parks = Park.joins(:sports).where("sports.name = ?", params[:sport]) if params[:sport]
-		# @sport_id = params[:id]
-	end
-
-	def destroy
-	end
-
-	def edit
-	end
-
-	def update
+		
 	end
 
 	private

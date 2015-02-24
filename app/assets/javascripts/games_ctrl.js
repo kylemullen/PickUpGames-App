@@ -3,8 +3,6 @@
 
 	angular.module("app").controller("gamesCtrl", ["$scope", "$http", function($scope, $http){
 
-
-
 		$http.get("/api/v1/games.json").then(function (response)	{
 			$scope.games = response.data;
 		});
@@ -95,8 +93,6 @@
       $scope.orderAttribute = attribute;
       $scope.sortDirection = !$scope.sortDirection;
     };
-
-
 
 		window.scope = $scope;
 
